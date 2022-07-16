@@ -30,10 +30,10 @@ SETTINGS = {
     "cookie_secret": SITE_CFG['cookie_secret'],
     "login_url": "/user/login",
     'ui_modules': dict(core_modules, **CUR_MODUES),
-    'ui_methods': uifuncs
+    'ui_methods': uifuncs,
 }
 
 APP = tornado.web.Application(
     handlers=urls,
-    **SETTINGS
+    **SETTINGS,
 )

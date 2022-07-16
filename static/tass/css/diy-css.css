@@ -1,0 +1,83 @@
+.diy-container .row {
+    margin-top:8px;
+    margin-left:-5px;
+    margin-right:-5px;
+    background-color: #fff;
+}
+.container .main-content {
+    margin-left:-10px;
+    margin-right:-10px;
+}
+.main-content .alert {
+    margin-bottom: 0px;
+}
+.diy-container {
+    width: 86%;
+}
+.container .list-group {
+    margin-bottom: 0px;
+}
+
+.diy-container .weather-background {
+    background-color: #26c6da;
+}
+
+.diy-container .carousel {
+    height: auto;
+    margin-bottom: 0px;
+}
+.diy-container .banner{
+    border-radius: 3%;
+}
+.diy-container .banner .carousel .item {
+    height: 320px;
+    border-radius: 3%;
+}
+.diy-container .banner .carousel-inner>.item>img {
+    height: 320px;
+    top: 0px;
+    border-radius: 3%;
+}
+.diy-container .carousel-control.right {
+    background-image: none;
+}
+
+.diy-container .carousel-control.left {
+    background-image: none;
+}
+.diy-container .search {
+    padding-left:2px;
+    padding-right:2px;
+    background-color: #48586e;
+}
+
+.body-style {
+    background-color: #333F4F
+}
+.diy-container .news-share .carousel .item {
+    height: 180px;
+}
+.diy-container .news-share {
+    height: 180px;
+    border-radius: 3%;
+}
+.diy-container .news-share .carousel-inner>.item>img {
+    height: 180px;
+    top: 0px;
+}
+.ad .left-share {
+    border-radius: 2%;
+}
+.left-share .carousel .item {
+    height: 180px;
+}
+.left-share .carousel-inner>.item>img {
+    top: 0px;
+    height: 180px;
+}
+.diy-container .ad2 {
+    background-color: #111111;
+    position: fixed;
+    top: 10px;
+    width: 289px;
+}

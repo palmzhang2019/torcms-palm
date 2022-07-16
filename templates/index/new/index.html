@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    {% module use_f2e('f2elib') %}
+    {% module use_f2e('codemirror') %}
+
+    <link rel="stylesheet" href="/static/tass/css/style.css" type="text/css">
+    {% block headinfo %}
+    {% end %}
+    {% block head %}
+    {% end %}
+
+    <script src="{{ static_url('jslib/dst/getIP.js') }}"></script>
+
+    <script language="javascript" type="text/javascript">
+        // 统计用户 访问网站步骤记录
+        var tjSecond = 0;
+        var tjRandom = 0;
+        var userinfo = "{{ userinfo.uid if userinfo else ''}}";
+
+        window.setInterval(function () {
+            tjSecond++;
+        }, 1000);
+        // 随机数
+        tjRandom = (new Date()).valueOf();
+
+        // 用户第一次访问页面记录部分数据
+        window.onload = function () {
+
+            var tjArr = localStorage.getItem("jsArr") ? localStorage.getItem("jsArr") : '[]';
+
+            var dataArr = {
+                'tjRd': tjRandom,
+                'url': location.href,
+                'refer': getReferrer(),
+                'user_id': userinfo
+            };
+            tjArr = eval('(' + tjArr + ')');
+            tjArr.push(dataArr);
+            var tjArr1 = JSON.stringify(tjArr);
+
+            localStorage.setItem("jsArr", tjArr1);
+
+
+        };
+        // 用户继续访问根据上面提供的key值补充数据
+        window.onbeforeunload = function () {
+
+            var tjArrRd = eval('(' + localStorage.getItem("jsArr") + ')');
+            var tjI = tjArrRd.length - 1;
+            if (tjArrRd[tjI].tjRd == tjRandom) {
+                tjArrRd[tjI].time = tjSecond;
+                tjArrRd[tjI].timeIn = Date.parse(new Date()) - (tjSecond * 1000);
+                tjArrRd[tjI].timeOut = Date.parse(new Date());
+
+                $.post("/log/_add", {
+                    url: tjArrRd[tjI].url,
+                    refer: tjArrRd[tjI].refer,
+                    user_id: tjArrRd[tjI].user_id,
+                    uid: tjArrRd[tjI].tjRd,
+                    timeon: tjArrRd[tjI].time,
+                    timein: tjArrRd[tjI].timeIn,
+                    timeOut: tjArrRd[tjI].timeOut
+
+                }, function (result) {
+                });
+                var tjArr1 = JSON.stringify(tjArrRd);
+                localStorage.setItem("jsArr", tjArr1);
+
+
+            }
+        };
+
+
+        function getReferrer() {
+            var referrer = '';
+            try {
+                referrer = window.top.document.referrer;
+            } catch (e) {
+                if (window.parent) {
+                    try {
+                        referrer = window.parent.document.referrer;
+                    } catch (e2) {
+                        referrer = '';
+                    }
+                }
+            }
+            if (referrer === '') {
+                referrer = document.referrer;
+            }
+
+            return referrer;
+
+        }
+
+    </script>
+
+
+    <link href="/static/css/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="row">
+                    <div class="col-xs-4">
+                        東京
+                    </div>
+                    <div class="col-xs-4">
+                        名古屋
+                    </div>
+                    <div class="col-xs-4">
+                        大阪
+                    </div>
+                </div>
+                <div class="row">
+                    音樂播放
+                </div>
+                <div class="row">
+                    <div id="tree"></div>
+                </div>
+                <div class="row">
+                    <div id="author-tree"></div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="row">
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="Text input">
+                    </div>
+                    <div class="col-xs-2">
+                        <button class="btn btn-default" type="submit">Search</button>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="jumbotron">
+                    <h1>IT friends in Japan</h1>
+                    <p>IT 社畜在日本</p>
+                  </div>
+                </div>
+                <div class="row">
+                    這裏是跑馬燈
+                </div>
+                <div class="row">
+                    版區塊名
+                </div>
+                <div class="row">
+                    這裏是google
+                </div>
+                <div class="row">
+                    warning msg
+                </div>
+                <div class="row">
+                    <h1>Title1</h1>
+                    <p>内文内文内文内文内文内文内文内文
+                        内文内文内文内文内文内文内文内文内文内
+                        文内文内文内文内文内文内文内文内文内文内文
+                        内文内文内文内文内文内文内文内文内文内文内文内
+                        文内文内文内文内文内文内文内文内文
+                    </p>
+                    <div class="row">
+                        發文者：胡雪岩
+                    </div>
+                    <div class="row">
+                        初次發佈時間:2033年5月6日
+                    </div>
+                    <div class="row">
+                        内容更新時刻:2033年5月7日
+                    </div>
+                </div>
+                <div class="row">
+                    <h1>Title2</h1>
+                    <p>内文内文内文内文内文内文内文内文
+                        内文内文内文内文内文内文内文内文内文内
+                        文内文内文内文内文内文内文内文内文内文内文
+                        内文内文内文内文内文内文内文内文内文内文内文内
+                        文内文内文内文内文内文内文内文内文
+                    </p>
+                    <div class="row">
+                        發文者：胡雪岩
+                    </div>
+                    <div class="row">
+                        初次發佈時間:2033年4月6日
+                    </div>
+                    <div class="row">
+                        内容更新時刻:2033年4月7日
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="row">
+                    <div class="col-xs-2">關於</div>
+                    <div class="col-xs-2">囘報</div>
+                    <div class="col-xs-2">字體</div>
+                    <div class="col-xs-2">BG</div>
+                    <div class="col-xs-2">言語</div>
+                </div>
+                <div class="row">
+                    重點新聞分享
+                </div>
+                <div class="row">
+                    <div>User情報操作</div>
+                    <div>
+                        <span>權限名稱</span>
+                        <span>ID</span>
+                        <span>積分</span>
+                    </div>
+                    <div class="col-xs-6"><span>最新情報</span><span>12</span></div>
+                    <div class="col-xs-6">操作履歷</div>
+                </div>
+                <div class="row">
+                    <p class="text-muted">最新人氣文章</p>
+                    <ul class="list-group">
+                      <li class="list-group-item"><span>1. </span>Cras justo odio</li>
+                      <li class="list-group-item"><span>2. </span>Dapibus ac facilisis in</li>
+                      <li class="list-group-item"><span>3. </span>Morbi leo risus</li>
+                      <li class="list-group-item"><span>4. </span>Porta ac consectetur ac</li>
+                      <li class="list-group-item"><span>5. </span>Vestibulum at eros</li>
+                      <li class="list-group-item"><span>6. </span>Vestibulum at eros</li>
+                      <li class="list-group-item"><span>7. </span>Vestibulum at eros</li>
+                      <li class="list-group-item"><span>8. </span>Vestibulum at eros</li>
+                      <li class="list-group-item"><span>9. </span>Vestibulum at eros</li>
+                      <li class="list-group-item"><span>10. </span>Vestibulum at eros</li>
+                      <li class="list-group-item"><span>11. </span>Vestibulum at eros</li>
+                      <li class="list-group-item"><span>12. </span>Vestibulum at eros</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/bootstrap-treeview/src/js/bootstrap-treeview.js"></script>
+    <script type="text/javascript">
+        var dataUrl = "/static/tmp/menu.json"
+        var request = new XMLHttpRequest();
+        request.open("get", dataUrl)
+        request.send(null)
+        request.onload = function(){
+            if (request.status == 200) {
+                var data = request.responseText
+                $('#tree').treeview({data: data});
+            }
+        }
+
+        var dataUrl2 = "/static/tmp/author-tree.json"
+        var request2 = new XMLHttpRequest();
+        request2.open("get", dataUrl2)
+        request2.send(null)
+        request2.onload = function(){
+            if (request.status == 200) {
+                var data2 = request2.responseText
+                $('#author-tree').treeview({data: data2});
+            }
+        }
+    </script>
+</body>
+</html>
