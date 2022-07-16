@@ -117,3 +117,6 @@
 .diy-container .paginat {
     text-align: center;
 }
+.diy-container .form-control.search {
+    color: #f2f0f0;
+}
