@@ -4,60 +4,122 @@
 {% end %}
 
 {% block mainbody %}
-<div class="row" style="border-radius:0%">
-                <div class="text-center"><p>美食介紹</p></div>
-                <ul class="list-group">
-                    <li class="list-group-item"><span>1. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>2. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>3. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>4. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>5. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>6. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>7. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>8. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>9. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>10. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>11. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>12. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>13. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>14. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>15. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>16. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>17. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>18. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>19. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>20. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>21. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>22. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>23. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>24. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>25. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>26. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>27. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>28. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>29. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>30. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>31. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>32. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>33. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>34. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>35. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>36. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>37. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>38. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>39. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>40. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>41. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>42. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>43. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>44. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>45. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>46. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>47. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>48. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>49. </span>文章名。。。。。。。</li>
-                    <li class="list-group-item"><span>50. </span>文章名。。。。。。。</li>
-                </ul>
-            </div>
+<div class="row index-content">
+    <div>
+        <div class="row title">
+            <h4>Title</h4>
+            <p class="author-detail">發文者:<a href="">尼安德特人</a> </p>
+        </div>
+        <div class="row more2less">
+            <span><a onclick="collapse(this, 1)"><b>more</b></a></span>
+            <span style="display: none"><a onclick="collapse(this, 2)"><b>less</b></a></span>
+        </div>
+        <div class="index-details">
+        </div>
+        <div class="row post-detail">
+            <p>初次發布時刻: YYYY/MM/DD HH:mm:ss</p>
+            <p>內容更新時刻: YYYY/MM/DD HH:mm:ss</p>
+        </div>
+        <div class="row more2less">
+            <span><a onclick="collapse(this, 1)"><b>more</b></a></span>
+            <span style="display: none"><a onclick="collapse(this, 2)"><b>less</b></a></span>
+        </div>
+        <hr />
+    </div>
+    <div>
+        <div class="row title">
+            <h4>Title</h4>
+            <p class="author-detail">發文者:<a href="">尼安德特人</a> </p>
+        </div>
+        <div class="row more2less">
+            <span><a onclick="collapse(this, 1)"><b>more</b></a></span>
+            <span style="display: none"><a onclick="collapse(this, 2)"><b>less</b></a></span>
+        </div>
+        <div class="index-details">
+        </div>
+        <div class="row post-detail">
+            <p>初次發布時刻: YYYY/MM/DD HH:mm:ss</p>
+            <p>內容更新時刻: YYYY/MM/DD HH:mm:ss</p>
+        </div>
+        <div class="row more2less">
+            <span><a onclick="collapse(this, 1)"><b>more</b></a></span>
+            <span style="display: none"><a onclick="collapse(this, 2)"><b>less</b></a></span>
+        </div>
+        <hr />
+    </div>
+    <div>
+        <div class="row title">
+            <h4>Title</h4>
+            <p class="author-detail">發文者:<a href="">尼安德特人</a> </p>
+        </div>
+        <div class="row more2less">
+            <span><a onclick="collapse(tFhis, 1)"><b>more</b></a></span>
+            <span style="display: none"><a onclick="collapse(this, 2)"><b>less</b></a></span>
+        </div>
+        <div class="index-details">
+        </div>
+        <div class="row post-detail">
+            <p>初次發布時刻: YYYY/MM/DD HH:mm:ss</p>
+            <p>內容更新時刻: YYYY/MM/DD HH:mm:ss</p>
+        </div>
+        <div class="row more2less">
+            <span><a onclick="collapse(this, 1)"><b>more</b></a></span>
+            <span style="display: none"><a onclick="collapse(this, 2)"><b>less</b></a></span>
+        </div>
+        <hr />
+    </div>
+</div>
 
+<script type="text/javascript">
+
+    $(function(){
+        var dataUrl3 = "/static/tmp/tmp_content.json"
+        var request3 = new XMLHttpRequest();
+        request3.open("get", dataUrl3)
+        request3.send(null)
+        request3.onload = function(){
+            if (request.status == 200) {
+                var detailList = request3.responseText
+                details = $('.index-details')
+                for (let i=0; i<details.length; i++) {
+                    innerText = JSON.parse(detailList)[0].content
+                    var smallText = innerText.substr(0,450)
+                    details[i].innerHTML = "<p>"+smallText+"</p>"
+                }
+            }
+        }
+    })
+</script>
+<script type="text/javascript">
+    function collapse(e, flag) {
+        var dataUrl3 = "/static/tmp/tmp_content.json"
+        var request3 = new XMLHttpRequest();
+        request3.open("get", dataUrl3)
+        request3.send(null)
+        targetDetail = e.parentNode.parentNode.parentNode.getElementsByClassName("index-details")[0]
+
+        if (flag === 1){
+            request3.onload = function(){
+                if (request.status == 200) {
+                    var detailList = request3.responseText
+                    innerText = JSON.parse(detailList)[0].content
+                    targetDetail.innerHTML = "<p>"+innerText+"</p>"
+                }
+            }
+            e.parentNode.style.display = "none"
+            e.parentNode.nextElementSibling.style.display = ""
+        } else{
+            request3.onload = function(){
+                if (request.status == 200) {
+                    var detailList = request3.responseText
+                    innerText = JSON.parse(detailList)[0].content
+                    var smallText = innerText.substr(0,450)
+                    targetDetail.innerHTML = "<p>"+smallText+"</p>"
+                }
+            }
+            e.parentNode.style.display = "none"
+            e.parentNode.previousElementSibling.style.display = ""
+        }
+    }
+</script>
 {% end %}

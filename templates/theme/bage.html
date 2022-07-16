@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/static/css/music/music-style.css" type="text/css">
     <link rel="stylesheet" href="/static/css/weather/weather-style.css" type="text/css">
     <link rel="stylesheet" href="/static/tass/css/diy-css.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/tag-cloud/tag-cloud.css" type="text/css">
     {% block headinfo %}
     {% end %}
     {% block head %}
@@ -145,7 +146,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="absolute right-4 top-4">
+                <div class="absolute right-4 top-4 music">
                     <div id="dark-mode-toggle" class="cursor-pointer">
                     </div>
                 </div>
@@ -412,7 +413,7 @@
                 </div>
             </div>
             {% block mainbody %}
-
+                {% block typebody %}{% end %}
             {% end %}
         </div>
         <div class="col-xs-3 right" >
@@ -489,7 +490,7 @@
                 <div class="col-xs-6">操作履歷</div>
             </div>
             <div class="row">
-                <div class="text-muted text-center"><h2>最新人氣文章</h2></div>
+                <div class="text-muted text-center"><h4>最新人氣文章</h4></div>
                 <ul class="list-group">
                   <li class="list-group-item"><span>1. </span>Cras justo odio</li>
                   <li class="list-group-item"><span>2. </span>Dapibus ac facilisis in</li>
@@ -503,6 +504,30 @@
                   <li class="list-group-item"><span>10. </span>Vestibulum at eros</li>
                   <li class="list-group-item"><span>11. </span>Vestibulum at eros</li>
                   <li class="list-group-item"><span>12. </span>Vestibulum at eros</li>
+                </ul>
+            </div>
+            <div class="row tag-cloud">
+                <ul>
+                    <li><a href="#">tag<span>20</span></a></li>
+                    <li><a href="#">tag<span>20</span></a></li>
+                    <li><a href="#">tag<span>20</span></a></li>
+                    <li><a href="#">tag<span>20</span></a></li>
+                    <li><a href="#">tag<span>20</span></a></li>
+                    <li><a href="#">tag<span>20</span></a></li>
+                    <li><a href="#">tag<span>20</span></a></li>
+                    <li><a href="#">tag<span>20</span></a></li>
+                    <li><a href="#">tag<span>20</span></a></li>
+                    <li><a href="#">Lorem ipsum dolor sit amet<span>20</span></a></li>
+                    <li><a href="#">tag<span>20</span></a></li>
+                    <li><a href="#">tag<span>20</span></a></li>
+                    <li><a href="#">tag<span>20</span></a></li>
+                    <li><a href="#">tag<span>20</span></a></li>
+                    <li><a href="#">tag<span>20</span></a></li>
+                    <li><a href="#">tag<span>20</span></a></li>
+                    <li><a href="#">tag<span>20</span></a></li>
+                    <li><a href="#">tag<span>20</span></a></li>
+                    <li><a href="#">tag<span>20</span></a></li>
+                    <li><a href="#">consectetur adipisicing elit<span>20</span></a></li>
                 </ul>
             </div>
         </div>

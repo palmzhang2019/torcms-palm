@@ -1,44 +1,83 @@
 {% extends "../theme/bage.html" %}
 {% block typebody %}
-<div class="row">
-    <div class="col-sm-9">
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="panel panel-black">
-                    {% module post_catalog_of('0100',slug=True) %}
-                </div>
+<div class="row" style="border-radius:0%">
+                <div class="text-center"><p>美食介紹</p></div>
+                <ul class="list-group">
+                    <li class="list-group-item"><span>1. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>2. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>3. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>4. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>5. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>6. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>7. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>8. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>9. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>10. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>11. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>12. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>13. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>14. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>15. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>16. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>17. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>18. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>19. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>20. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>21. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>22. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>23. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>24. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>25. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>26. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>27. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>28. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>29. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>30. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>31. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>32. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>33. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>34. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>35. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>36. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>37. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>38. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>39. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>40. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>41. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>42. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>43. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>44. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>45. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>46. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>47. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>48. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>49. </span>文章名。。。。。。。</li>
+                    <li class="list-group-item"><span>50. </span>文章名。。。。。。。</li>
+                </ul>
             </div>
-            <div class="col-sm-4">
-                <div class="panel panel-black">
-                    {% module post_catalog_of('0200',slug=True) %}
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="panel panel-black">
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                    {{ _('Most concern') }}
-                </h3>
-            </div>
-            <ul class="list-group" id="mostall">
-                {% module post_most_view(5, with_date = False, with_catalog= False) %}
-            </ul>
-        </div>
-        <div class="panel panel-black">
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                    {{ _('Recent articles') }}
-                </h3>
-            </div>
-            <ul class="list-group">
-                {% module post_recent(5, with_date = False, with_catalog= False) %}
-            </ul>
-        </div>
-    </div>
+<div class="row paginat">
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        <li>
+          <a href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li class="active"><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">6</a></li>
+        <li><a href="#">7</a></li>
+        <li><a href="#">8</a></li>
+        <li><a href="#">9</a></li>
+        <li>
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
 </div>
-<br>
 {% end %}
