@@ -63,3 +63,8 @@
 .personal-container .activitys ul li {
     margin-top: 10px;
 }
+.personal-container .regist {
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #555;
+}

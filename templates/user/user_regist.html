@@ -1,4 +1,4 @@
-{% extends "../theme/bage.html" %}
+{% extends "../theme/personal.html" %}
 {% block typebody %}
 <script type="text/javascript">
     $().ready(function () {
@@ -46,13 +46,8 @@
     });
 </script>
 
-<div class="mtop">
-    <ul class="breadcrumb">
-        <li>{{ _('Current location') }}: <a href="{% module site_url() %}">{{ _('Home') }}</a></li>
-        <li class="active">{{ _('Regist') }}</li>
-    </ul>
-</div>
-<div class="panel panel-black">
+<div class="row regist">
+    <div class="panel panel-black">
     <div class="panel-heading"><b>{{ _('Regist') }} </b></div>
     <div class="panel-body">
         <form id="form_regist" action="/user/regist" method="post" class="form-horizontal" role="form">
@@ -100,6 +95,7 @@
             </fieldset>
         </form>
     </div>
+</div>
 </div>
 {% end %}
 
