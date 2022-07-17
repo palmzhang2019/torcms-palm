@@ -1,0 +1,11 @@
+.personal-container {
+    width: 86%;
+}
+.personal-backgroud {
+    width: 100%;
+    height: 280px;
+}
+.personal-backgroud .row {
+    margin-left: 0px;
+    margin-right: 0px;
+}

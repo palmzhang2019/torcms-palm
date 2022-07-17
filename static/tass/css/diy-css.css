@@ -120,3 +120,18 @@
 .diy-container .form-control.search {
     color: #f2f0f0;
 }
+.diy-container .nav-container {
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: rgba(0,0,0,0);
+}
+
+.diy-container .nav-container .navbar.navbar-default {
+    margin-bottom: 0px;
+}
+
+.diy-container .body-container {
+    margin-left: 0px;
+    margin-right: 0px;
+    background-color: rgba(0,0,0,0);
+}
