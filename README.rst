@@ -279,6 +279,18 @@ Then, upload to the website.
 
     twine upload dist/torcms-version.tar.gz
 
+routers
+---------------------------------
+1. parent page1 --> templates/theme/bage.html
+2. parent page2 --> templates/theme/personal.html
+3. index page --> / --> templates/index/index.html
+4. list page --> /post/ --> templates/modules/post/post_catalog_slug.html
+5. detail page --> /post/{uid} --> templates/post_1/post_view.html
+6. search page --> /search/{search_word}/1 --> templates/misc/search/search_list.html
+7. personal space page --> /user/info --> templates/user/user_info.html
+8. login page  --> /user/login --> templates/user/user_login.html
+9. regis page  --> /user/regist --> templates/user/regist.html
+
 
 In Chinese
 =========================
@@ -305,15 +317,3 @@ In Chinese
 -  http://www.wds-china.org (世界数据系统中国)
 -  http://wdcrre.data.ac.cn/ (可再生资源与环境世界数据中心)
 -  http://drr.ikcest.org (联合国教科文组织国际工程科技知识中心防灾减灾知识服务平台)
-
-routers
----------------------------------
-0. 父页面 --> templates/theme/bage.html
-            --> templates/theme/personal.html
-1. 首页 --> / --> templates/index/index.html
-2. 列表页面 --> /post/ --> templates/modules/post/post_catalog_slug.html
-3. 内容页面 --> /post/{uid} --> templates/post_1/post_view.html
-4. 搜索页面 --> /search/{search_word}/1 --> templates/misc/search/search_list.html
-5. 个人空间主页 --> /user/info --> templates/user/user_info.html
-6. 登录页面  --> /user/login --> templates/user/user_login.html
-7. 注册页面  --> /user/regist --> templates/user/regist.html
