@@ -3,9 +3,63 @@
 }
 .personal-backgroud {
     width: 100%;
-    height: 280px;
+    height: 320px;
+    margin-top: 10px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2), 0 0 0 8px #de0840, 0 0 200px 30px rgba(0, 126, 255, 0.31);
+    border-radius: 6px;
 }
 .personal-backgroud .row {
     margin-left: 0px;
     margin-right: 0px;
+}
+.personal-container .navbar.navbar-default {
+    margin-bottom: 10px;
+}
+.personal-container .row {
+    margin-left: 0px;
+    margin-right:0px;
+}
+.personal-container .banner {
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: rgba(0,0,0,0);
+}
+.personal-container .select-tab {
+    margin-top: 30px;
+}
+.body-style {
+    background-color: #333F4F
+}
+.personal-container .avatar-img {
+    margin-top: 20px;
+}
+.personal-container .profile1 {
+    margin-top: 20px;
+}
+.personal-container .profile2 {
+    margin-top: 20px;
+    color: #222222;
+}
+.personal-container .right {
+    margin-top: 0px;
+    padding-right: 0px;
+    padding-left: 5px;
+}
+.personal-container .right .row {
+    background-color: #fff;
+    padding-left: -10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    color: #222222;
+    font-size: 14px;
+}
+.personal-container .activitys {
+    margin-left: 10px;
+}
+
+.personal-container .activitys ul {
+    margin-left: 10px;
+}
+.personal-container .activitys ul li {
+    margin-top: 10px;
 }

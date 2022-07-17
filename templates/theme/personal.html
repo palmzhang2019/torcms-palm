@@ -11,7 +11,8 @@
 
     <link rel="stylesheet" href="/static/tass/css/style.css" type="text/css">
     <link rel="stylesheet" href="/static/tass/css/personal.css" type="text/css">
-    <link rel="stylesheet" href="/static/css/login/login-style.css">
+    <link rel="stylesheet" href="/static/css/tab-select/tachyons.min.css" />
+    <link rel="stylesheet" href="/static/css/tab-select/tab-select.css" />
     {% block headinfo %}
     {% end %}
     {% block head %}
@@ -102,40 +103,6 @@
 
     </script>
 
-    <script language="javascript" type="text/javascript">
-        function changeLogin(e, flag) {
-            if (e.value.length == 0){
-                var span = document.createElement('span')
-                span.style.color = 'red'
-                if (flag == 1){
-                    var text = document.createTextNode('type your account name please')
-                }else{
-                    var text = document.createTextNode('type your account password please')
-                }
-                span.appendChild(text)
-                e.parentNode.appendChild(span)
-            }
-        }
-    
-    </script>
-    <script language="javascript" type="text/javascript">
-        function submitLogin(e) {
-            var user_name = $('#user_name').val();
-            var password = $('#password').val()
-            var httpRequest = new XMLHttpRequest();
-            httpRequest.open('POST', '/user/login', true); 
-            httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-            httpRequest.send('user_name='+user_name+'&user_pass='+password);//发送请求 将情头体写在send中
-            httpRequest.onreadystatechange = function () {
-            if (httpRequest.readyState == 4 && httpRequest.status == 200) {//验证请求是否发送成功
-                    window.location.href="/";
-                }else if (httpRequest.readyState == 4 && httpRequest.status == 401) {
-                    alert('password wrong')
-                }
-            };
-        }
-
-    </script>
 
     <link href="/static/css/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
@@ -144,7 +111,8 @@
 
 <body class="body-style">
     <div class="container personal-container">
-        <nav class="navbar navbar-default" role="navigation">
+        <div class="row banner">
+            <nav class="navbar navbar-default" role="navigation">
             <div class="container-fluid">
     <div class="navbar-header">
         <a class="navbar-brand" href="#">简单教程</a>
@@ -171,69 +139,11 @@
     </div>
     </div>
         </nav>
-        <div class="row">
-            <div class="panel">
-        <h1>IT Friends</h1>
-        <div class="formset" id="form_login">
-            <div class="form-group">
-                <lable class="form-label">用户名</lable>
-                <input type="text" name="user_name" id="user_name" class="form-control" type="text" onchange="changeLogin(this, 1)"/>
-            </div>
-            <div class="form-group">
-                <lable class="form-label">密码</lable>
-                <input class="form-control" type="password" id="password" onchange="changeLogin(this, 2)"/>
-            </div>
-            <button class="btn" onclick="submitLogin(this)">登录</button>
         </div>
-        <h4>第三方账号</h4>
-        <form class="twitter log-form">
-            <h3 class="caption fa fa-twitter"></h3>
-            <p>Login with Twitter</p><i class="close">&times;</i>
-            <div class="formset">
-                <div class="form-group">
-                    <lable class="form-label">User Name</lable>
-                    <input class="form-control" type="text" />
-                </div>
-                <div class="form-group">
-                    <lable class="form-label">Password</lable>
-                    <input type="password" name="user_pass" id="user_pass" class="form-control" type="password" />
-                </div>
-                <button class="btn">Log in</button>
-            </div>
-        </form>
-        <form class="google log-form">
-            <h3 class="caption fa fa-google-plus"> </h3>
-            <p>Login with Google + </p><i class="close">&times;</i>
-            <div class="formset">
-                <div class="form-group">
-                    <lable class="form-label">User Name</lable>
-                    <input class="form-control" type="text" />
-                </div>
-                <div class="form-group">
-                    <lable class="form-label">Password</lable>
-                    <input class="form-control" type="password" />
-                </div>
-                <button class="btn">Log in</button>
-            </div>
-        </form>
-        <form class="facebook log-form">
-            <h3 class="caption fa fa-facebook"> </h3>
-            <p>Login with Facebook </p><i class="close">&times;</i>
-            <div class="formset">
-                <div class="form-group">
-                    <lable class="form-label">User Name</lable>
-                    <input class="form-control" type="text" />
-                </div>
-                <div class="form-group">
-                    <lable class="form-label">Password</lable>
-                    <input class="form-control" type="password" />
-                </div>
-                <button class="btn">Log in</button>
-            </div>
-        </form>
+        {% block mainbody %}
+            {% block typebody %}{% end %}
+        {% end %}
     </div>
 
-        </div>
-    </div>
 </body>
 </html>

@@ -1,151 +1,169 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta charset="utf-8">
-    <meta name="applicable-device" content="pc,mobile">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    {% module use_f2e('f2elib') %}
-    {% module use_f2e('codemirror') %}
+{% extends "../theme/personal.html" %}
+{% block head %}
+<title>{{ _('User List') }}</title>
+<meta name="description" content="{{ _('User List') }}">
+<meta name="keywords" content="{{ _('User List') }}">
 
-    <link rel="stylesheet" href="/static/tass/css/style.css" type="text/css">
-    <link rel="stylesheet" href="/static/tass/css/personal.css" type="text/css">
-    {% block headinfo %}
-    {% end %}
-    {% block head %}
-    {% end %}
-
-    <script src="{{ static_url('jslib/dst/getIP.js') }}"></script>
-
-    <script language="javascript" type="text/javascript">
-        // 统计用户 访问网站步骤记录
-        var tjSecond = 0;
-        var tjRandom = 0;
-        var userinfo = "{{ userinfo.uid if userinfo else ''}}";
-
-        window.setInterval(function () {
-            tjSecond++;
-        }, 1000);
-        // 随机数
-        tjRandom = (new Date()).valueOf();
-
-        // 用户第一次访问页面记录部分数据
-        window.onload = function () {
-
-            var tjArr = localStorage.getItem("jsArr") ? localStorage.getItem("jsArr") : '[]';
-
-            var dataArr = {
-                'tjRd': tjRandom,
-                'url': location.href,
-                'refer': getReferrer(),
-                'user_id': userinfo
-            };
-            tjArr = eval('(' + tjArr + ')');
-            tjArr.push(dataArr);
-            var tjArr1 = JSON.stringify(tjArr);
-
-            localStorage.setItem("jsArr", tjArr1);
-
-
-        };
-        // 用户继续访问根据上面提供的key值补充数据
-        window.onbeforeunload = function () {
-
-            var tjArrRd = eval('(' + localStorage.getItem("jsArr") + ')');
-            var tjI = tjArrRd.length - 1;
-            if (tjArrRd[tjI].tjRd == tjRandom) {
-                tjArrRd[tjI].time = tjSecond;
-                tjArrRd[tjI].timeIn = Date.parse(new Date()) - (tjSecond * 1000);
-                tjArrRd[tjI].timeOut = Date.parse(new Date());
-
-                $.post("/log/_add", {
-                    url: tjArrRd[tjI].url,
-                    refer: tjArrRd[tjI].refer,
-                    user_id: tjArrRd[tjI].user_id,
-                    uid: tjArrRd[tjI].tjRd,
-                    timeon: tjArrRd[tjI].time,
-                    timein: tjArrRd[tjI].timeIn,
-                    timeOut: tjArrRd[tjI].timeOut
-
-                }, function (result) {
-                });
-                var tjArr1 = JSON.stringify(tjArrRd);
-                localStorage.setItem("jsArr", tjArr1);
-
-
-            }
-        };
-
-
-        function getReferrer() {
-            var referrer = '';
-            try {
-                referrer = window.top.document.referrer;
-            } catch (e) {
-                if (window.parent) {
-                    try {
-                        referrer = window.parent.document.referrer;
-                    } catch (e2) {
-                        referrer = '';
-                    }
-                }
-            }
-            if (referrer === '') {
-                referrer = document.referrer;
-            }
-
-            return referrer;
-
-        }
-
-    </script>
-
-
-    <link href="/static/css/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-
-
-</head>
-
-<body class="body-style">
-    <div class="container personal-container">
-        <nav class="navbar navbar-default" role="navigation">
-            <div class="container-fluid">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="#">简单教程</a>
-    </div>
-    <div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="#">HTML 5</a></li>
-            <li><a href="#">CSS 3</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    后端 <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Java</a></li>
-                    <li><a href="#">Python</a></li>
-                    <li><a href="#">PHP</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">分离的链接</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">另一个分离的链接</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    </div>
-        </nav>
-        <div class="row">
-            <div class="col-xs-8">
-                <div class="row">
-                    <div class="personal-backgroud">
-                        <img src="/static/upload/personal1.png" alt="" width="100%">
+{% end %}
+{% block typebody %}
+    <div class="row select-main">
+        <div class="col-xs-8">
+            <div class="row">
+                <div class="personal-backgroud" style="background-image: url('/static/upload/personal1.png')">
+                    <div class="col-xs-8">
+                        <div class="row"></div>
+                        <div class="row"></div>
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="row profile1">
+                            <h2>个人简介</h2>
+                        </div>
+                        <div class="row profile2">
+                            个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个
+                            人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人
+                            简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简
+                            介个人简介个人简介个人简介个人简介个人简介
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="avatar-img">
+                            <img src="/static/upload/avatar1.jpg" alt="" width="150px" class="img-circle">
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-4">222</div>
+
+            <div class="row select-tab">
+                <section class="accordion-tabs js-tabs" data-tabs-allowed="true" data-breakpoint="400" data-start-collapsed="false">
+                    <ul role="tablist" class="tabs-tab-list">
+                        <li role="presentation"><a id="tab1" href="#section1" role="tab" aria-controls="section1" aria-selected="true" class="tabs-trigger js-tabs-trigger">Profile</a></li>
+                        <li role="presentation"><a id="tab2" href="#section2" role="tab" aria-controls="section2" class="tabs-trigger js-tabs-trigger">Answer</a></li>
+                        <li role="presentation"><a id="tab3" href="#section3" role="tab" aria-controls="section3" class="tabs-trigger js-tabs-trigger">追记</a></li>
+                        <li role="presentation"><a id="tab4" href="#section3" role="tab" aria-controls="section3" class="tabs-trigger js-tabs-trigger">Question</a></li>
+                        <li role="presentation"><a id="tab5" href="#section3" role="tab" aria-controls="section3" class="tabs-trigger js-tabs-trigger">Post</a></li>
+                        <li role="presentation"><a id="tab6" href="#section3" role="tab" aria-controls="section3" class="tabs-trigger js-tabs-trigger">Follwers</a></li>
+                    </ul>
+                    <section id="section1" role="tabpanel" aria-labelledby="tab1" class="tabs-panel js-tabs-panel" tabindex="0">
+                        <div class="accordeon-trigger js-accordeon-trigger" aria-controls="section1" aria-expanded="true" tabindex="0">
+                            Profile <div class="accordeon-trigger-icon">
+                                <span class="label--open">Open</span><span class="label--close">Close</span>
+                                <svg aria-hidden="true" focusable="false" viewBox="0 0 20 20">
+                                    <rect class="vert" height="18" width="2" fill="currentColor" y="1" x="9"></rect>
+                                    <rect height="2" width="18" fill="currentColor" y="9" x="1"></rect>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="content" aria-hidden="false">
+                            <h2>Profile</h2>
+                            <p>Cum prefrontal cortex horribilem walking fornix dead resurgere brains de crazed limbic cortex optic nerve sepulcris creaturis, braaaaaiins zombie sicut hypothalamus de <a href="#">grave hippocampus feeding</a> iride brainz et serpens. Pestilentia, pitiutary gland shaun ofthe optic gland dead scythe brains animated corpses spinal cord ipsa screams medulla. Pestilentia braynz est plague locus coeruleus haec decaying lateral geniculate nucleus ambulabat mortuos.</p>
+                        </div>
+                    </section>
+                    <section id="section2" role="tabpanel" aria-labelledby="tab2" class="tabs-panel js-tabs-panel">
+                        <div class="accordeon-trigger js-accordeon-trigger" aria-controls="section2" aria-expanded="false" tabindex="0">
+                            Answer <div class="accordeon-trigger-icon">
+                                <span class="label--open">Open</span><span class="label--close">Close</span><svg aria-hidden="true" focusable="false" viewBox="0 0 20 20">
+                                    <rect class="vert" height="18" width="2" fill="currentColor" y="1" x="9"></rect>
+                                    <rect height="2" width="18" fill="currentColor" y="9" x="1"></rect>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="content" aria-hidden="true">
+                            <h2>Answer</h2>
+                            <p>Zombie ipsum brains reversus ab cerebellum viral inferno, brein nam rick mend grimes malum cerveau cerebro. De carne cerebro lumbering animata cervello corpora quaeritis. Summus thalamus brains sit​​, morbo basal ganglia vel maleficia? De braaaiiiins apocalypsi gorger omero prefrontal cortex <a href="#">undead survivor</a> fornix dictum mauris. Hi brains mindless mortuis limbic cortex soulless creaturas optic nerve, imo evil braaiinns stalking monstra hypothalamus adventus resi hippocampus dentevil.</p>
+                        </div>
+                    </section>
+                    <section id="section3" role="tabpanel" aria-labelledby="tab3" class="tabs-panel js-tabs-panel">
+                        <div class="accordeon-trigger js-accordeon-trigger" aria-controls="section3" aria-expanded="false" tabindex="0">
+                            追记 <div class="accordeon-trigger-icon">
+                                <span class="label--open">Open</span><span class="label--close">Close</span><svg aria-hidden="true" focusable="false" viewBox="0 0 20 20">
+                                    <rect class="vert" height="18" width="2" fill="currentColor" y="1" x="9"></rect>
+                                    <rect height="2" width="18" fill="currentColor" y="9" x="1"></rect>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="content" aria-hidden="true">
+                            <h2>追记</h2>
+                            <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De <a href="#">carne lumbering animata</a> corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. </p>
+                        </div>
+                    </section>
+                    <section id="section4" role="tabpanel" aria-labelledby="tab4" class="tabs-panel js-tabs-panel">
+                        <div class="accordeon-trigger js-accordeon-trigger" aria-controls="section4" aria-expanded="false" tabindex="0">
+                            Question <div class="accordeon-trigger-icon">
+                                <span class="label--open">Open</span><span class="label--close">Close</span><svg aria-hidden="true" focusable="false" viewBox="0 0 20 20">
+                                    <rect class="vert" height="18" width="2" fill="currentColor" y="1" x="9"></rect>
+                                    <rect height="2" width="18" fill="currentColor" y="9" x="1"></rect>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="content" aria-hidden="true">
+                            <h2>Questions</h2>
+                            <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De <a href="#">carne lumbering animata</a> corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. </p>
+                        </div>
+                    </section>
+                    <section id="section5" role="tabpanel" aria-labelledby="tab5" class="tabs-panel js-tabs-panel">
+                        <div class="accordeon-trigger js-accordeon-trigger" aria-controls="section5" aria-expanded="false" tabindex="0">
+                            Post <div class="accordeon-trigger-icon">
+                                <span class="label--open">Open</span><span class="label--close">Close</span><svg aria-hidden="true" focusable="false" viewBox="0 0 20 20">
+                                    <rect class="vert" height="18" width="2" fill="currentColor" y="1" x="9"></rect>
+                                    <rect height="2" width="18" fill="currentColor" y="9" x="1"></rect>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="content" aria-hidden="true">
+                            <h2>Post</h2>
+                            <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De <a href="#">carne lumbering animata</a> corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. </p>
+                        </div>
+                    </section>
+                    <section id="section6" role="tabpanel" aria-labelledby="tab6" class="tabs-panel js-tabs-panel">
+                        <div class="accordeon-trigger js-accordeon-trigger" aria-controls="section6" aria-expanded="false" tabindex="0">
+                            Follwers <div class="accordeon-trigger-icon">
+                                <span class="label--open">Open</span><span class="label--close">Close</span><svg aria-hidden="true" focusable="false" viewBox="0 0 20 20">
+                                    <rect class="vert" height="18" width="2" fill="currentColor" y="1" x="9"></rect>
+                                    <rect height="2" width="18" fill="currentColor" y="9" x="1"></rect>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="content" aria-hidden="true">
+                            <h2>Follwers</h2>
+                            <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De <a href="#">carne lumbering animata</a> corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. </p>
+                        </div>
+                    </section>
+                </section>
+            </div>
+        </div>
+        <div class="col-xs-4 right">
+            <div class="row">
+                <div class="activitys">
+                    <h4>
+                        activity
+                    </h4>
+                    <ul>
+                        <li>activity 1</li>
+                        <li>activity 2</li>
+                        <li>activity 3</li>
+                        <li>activity 4</li>
+                        <li>activity 5</li>
+                        <li>activity 6</li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="activitys">
+                    <h4>
+                        knows about
+                    </h4>
+                    <ul>
+                        <li>skill 1</li>
+                        <li>skill 2</li>
+                        <li>skill 3</li>
+                        <li>skill 4</li>
+                        <li>skill 5</li>
+                        <li>skill 6</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-</body>
-</html>
+    <script src="/static/js/a11y-accordion-tabs.min.js"></script>
+{% end %}
