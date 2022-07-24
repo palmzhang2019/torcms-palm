@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/static/css/weather/weather-style.css" type="text/css">
     <link rel="stylesheet" href="/static/tass/css/diy-css.css" type="text/css">
     <link rel="stylesheet" href="/static/css/tag-cloud/tag-cloud.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {% block headinfo %}
     {% end %}
     {% block head %}
@@ -111,37 +112,10 @@
 </head>
 
 <body class="body-style">
-    <div class="container diy-container">
 
-        <div class="row nav-container">
-            <nav class="navbar navbar-default" role="navigation">
-                <div class="container-fluid">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="#">简单教程</a>
-    </div>
-    <div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="#">HTML 5</a></li>
-            <li><a href="#">CSS 3</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    后端 <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Java</a></li>
-                    <li><a href="#">Python</a></li>
-                    <li><a href="#">PHP</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">分离的链接</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">另一个分离的链接</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    </div>
-            </nav>
-        </div>
+    <div class="container diy-container">
+        {% module nav_header() %}
+
         <div class="row body-container">
             <div class="col-xs-3">
                 <div class="row weather-background">
@@ -431,9 +405,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="text-center">
-                        <p>版區塊名</p>
-                    </div>
+                    <div class="col-xs-2 plate" style="background-color: #4e99d2;"><span>杂谈</span></div>
+                    <div class="col-xs-2 plate" style="background-color: #94cf8b;"><span>户外</span></div>
+                    <div class="col-xs-2 plate" style="background-color: #ff747b;"><span>生活</span></div>
+                    <div class="col-xs-2 plate" style="background-color: #fa934e;"><span>留学</span></div>
+                    <div class="col-xs-2 plate" style="background-color: #9198dc;"><span>交友</span></div>
+                    <div class="col-xs-2 plate" style="background-color: #f7f033;"><span>工作</span></div>
                 </div>
                 <div class="row">
                       <marquee behavior="behavior" width="auto" loop="2">這裏會是一個跑馬燈的效果</marquee>
@@ -448,29 +425,6 @@
                 {% end %}
             </div>
             <div class="col-xs-3 right" >
-            <div class="row">
-                <div class="col-xs-2">
-                    <span>關</span>
-                </div>
-                <div class="col-xs-2">
-                    <span class="glyphicon glyphicon-magnet" aria-hidden="true"></span>
-                </div>
-                <div class="col-xs-2">
-                    <span class="glyphicon glyphicon-text-size" aria-hidden="true"></span>
-                </div>
-                <div class="col-xs-2">BG</div>
-                <div class="col-xs-2">言</div>
-            </div>
-            <div class="row">
-                <div class="col-xs-10" style="padding-left:5px; padding-right:5px;">
-                    <input type="text" class="form-control search" placeholder="Text input">
-                </div>
-                <div class="col-xs-1" style="padding-left: 0px">
-                    <button class="btn btn-default" type="submit">
-                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                    </button>
-                </div>
-            </div>
             <div class="row news-share">
                 <div id="newsShare" class="carousel slide">
                     <!-- 轮播（Carousel）指标 -->

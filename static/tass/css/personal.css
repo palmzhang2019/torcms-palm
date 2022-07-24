@@ -68,3 +68,26 @@
     margin-right: 10px;
     color: #555;
 }
+.distance-left {
+    padding-left: 5%;
+}
+.distance-right {
+    padding-left: 12%;
+}
+.index-search {
+    margin-top: 8px;
+    width: 220px;
+}
+.index-search-button {
+    margin-top: 8px;
+}
+.icon-style {
+    /*color: #50a6fe;*/
+}
+.distance-left li a {
+    padding-top: 11px;
+    padding-bottom: 8px;
+}
+.distance-left li:nth-child(5) a {
+    padding-top: 13px;
+}

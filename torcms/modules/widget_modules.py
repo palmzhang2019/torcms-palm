@@ -176,6 +176,11 @@ class Navigation_menu(tornado.web.UIModule):
                                   kwd=kwd)
 
 
+class Navigation_header(tornado.web.UIModule):
+    def render(self, *args, **kwargs):
+        return self.render_string('modules/widget/nav_header.html')
+
+
 class CommentList(tornado.web.UIModule):
     '''
     reply list

@@ -111,35 +111,7 @@
 
 <body class="body-style">
     <div class="container personal-container">
-        <div class="row banner">
-            <nav class="navbar navbar-default" role="navigation">
-            <div class="container-fluid">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="#">简单教程</a>
-    </div>
-    <div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="#">HTML 5</a></li>
-            <li><a href="#">CSS 3</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    后端 <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Java</a></li>
-                    <li><a href="#">Python</a></li>
-                    <li><a href="#">PHP</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">分离的链接</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">另一个分离的链接</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    </div>
-        </nav>
-        </div>
+        {% module nav_header() %}
         {% block mainbody %}
             {% block typebody %}{% end %}
         {% end %}
