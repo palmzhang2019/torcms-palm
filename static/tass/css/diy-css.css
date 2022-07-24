@@ -134,7 +134,7 @@
     padding-left: 5%;
 }
 .distance-right {
-    padding-left: 12%;
+    padding-left: 5%;
 }
 .index-search {
     margin-top: 8px;
@@ -154,27 +154,21 @@
     padding-top: 13px;
 }
 .plate {
-    width: 15.66%;
-    margin-left: 0.5%;
-    margin-right: 0.5%;
-    margin-top: 14px;
-    margin-bottom: 14px;
+    width: 11.66%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top: 8px;
+    margin-bottom: 8px;
     position:relative;
     height: 0;
     border-radius: 50%;
-    padding:15.66% 0 0;
+    padding:11.66% 0 0;
     text-align:center;
-}
-
-.plate div {
-    position: absolute;
-    top: 45%;
-    left: 35%;
 }
 
 .plate span {
     position: absolute;
-    top: 35%;
-    left: 32%;
+    top: 30%;
+    left: 27%;
     font-size:1.3em;
 }

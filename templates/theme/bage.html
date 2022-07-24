@@ -405,14 +405,14 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-2 plate" style="background-color: #4e99d2;"><span>杂谈</span></div>
-                    <div class="col-xs-2 plate" style="background-color: #94cf8b;"><span>户外</span></div>
-                    <div class="col-xs-2 plate" style="background-color: #ff747b;"><span>生活</span></div>
-                    <div class="col-xs-2 plate" style="background-color: #fa934e;"><span>留学</span></div>
-                    <div class="col-xs-2 plate" style="background-color: #9198dc;"><span>交友</span></div>
-                    <div class="col-xs-2 plate" style="background-color: #f7f033;"><span>工作</span></div>
+                    <div class="col-xs-2 plate" style="background-color: #4e99d2;"><span><a href="">杂谈</a></span></div>
+                    <div class="col-xs-2 plate" style="background-color: #94cf8b;"><span><a href="">户外</a></span></div>
+                    <div class="col-xs-2 plate" style="background-color: #ff747b;"><span><a href="">生活</a></span></div>
+                    <div class="col-xs-2 plate" style="background-color: #fa934e;"><span><a href="">留学</a></span></div>
+                    <div class="col-xs-2 plate" style="background-color: #9198dc;"><span><a href="">交友</a></span></div>
+                    <div class="col-xs-2 plate" style="background-color: #f7f033;"><span><a href="">工作</a></span></div>
                 </div>
-                <div class="row">
+                <div class="row" id="marquee">
                       <marquee behavior="behavior" width="auto" loop="2">這裏會是一個跑馬燈的效果</marquee>
                 </div>
                 {% block mainbody %}
@@ -556,6 +556,9 @@
                 }
             }
         })
+    </script>
+    <script type="text/javascript">
+        $("#marquee").show().delay(20000).fadeOut();
     </script>
     <script src='/static/js/amplitude.js'></script>
     <script src="/static/js/script.js"></script>
