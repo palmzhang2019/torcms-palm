@@ -60,10 +60,10 @@
     margin-bottom: 0px;
 }
 .diy-container .banner .carousel .item {
-    height: 320px;
+    height: 260px;
 }
 .diy-container .banner .carousel-inner>.item>img {
-    height: 320px;
+    height: 260px;
     top: 0px;
 }
 .diy-container .carousel-control.right {
@@ -86,25 +86,25 @@
     background-color: #333F4F
 }
 .diy-container .news-share .carousel .item {
-    height: 180px;
+    height: 160px;
 }
 .diy-container .news-share {
-    height: 180px;
+    height: 160px;
     border-radius: 3%;
 }
 .diy-container .news-share .carousel-inner>.item>img {
-    height: 180px;
+    height: 160px;
     top: 0px;
 }
 .ad .left-share {
     border-radius: 2%;
 }
 .left-share .carousel .item {
-    height: 180px;
+    height: 160px;
 }
 .left-share .carousel-inner>.item>img {
     top: 0px;
-    height: 180px;
+    height: 160px;
 }
 .diy-container .ad2 {
     background-color: #111111;
