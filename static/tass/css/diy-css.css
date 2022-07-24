@@ -74,7 +74,9 @@
 .diy-container .carousel-control.right {
     background-image: none;
 }
-
+.row.body-container .col-xs-3.right {
+    padding-right: 0px;
+}
 .diy-container .carousel-control.left {
     background-image: none;
 }
