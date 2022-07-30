@@ -1,0 +1,87 @@
+<script>
+    function tjstate(sid) {
+        var url = "/post_j/update_state/{{postinfo.uid}}/" + sid;
+
+        var recstate = document.getElementById("recstate");
+        var shcz = document.getElementById("shcz");
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            success: function (rs) {
+                var m = eval("(" + rs + ")");
+                if (m.state == 'a100') {
+                    recstate.innerHTML = '<span>待审核 <a class="btn btn-warning btn-xs"  onclick="tjstate(\'a000\')">撤销提交</a>&nbsp'
+                    shcz.innerHTML = '{% if userinfo and userinfo.role[3]>="1" %}  <span><a class="btn btn-success btn-xs" onclick="tjstate(\'b100\')">审核通过</a>&nbsp' +
+                        '<a class="btn btn-danger btn-xs" onclick="tjstate(\'b000\')">审核不通过</a></span>{% end %}';
+                } else if (m.state == 'b000') {
+                    recstate.innerHTML ='<span>审核未通过</span>'
+                    shcz.innerHTML = ' ';
+                } else if (m.state == 'b100') {
+                    recstate.innerHTML = '<span>审核通过</span> '
+                    shcz.innerHTML = '';
+                } else if (m.state == 'a000') {
+                    recstate.innerHTML = '<a href="/{{ kwd['router'] }}/_edit/{{postinfo.uid}}" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-pencil"></span>'+
+                        '{{ _('Modify') }}</a>&nbsp<a class="btn btn-primary btn-xs" onclick="tjstate(\'a100\')">提交审核</a>'
+                    shcz.innerHTML = '';
+                }
+                },
+            error: function (err) {
+                alert('提交失败');
+            }
+        });
+
+    }
+
+
+</script>
+
+<div class="row">
+
+    {% if userinfo and userinfo.user_name == postinfo.user_name  %}
+
+    <div id="recstate" class="col-sm-7"
+         style="overflow: hidden; text-overflow:ellipsis; white-space: nowrap; display: block; ">
+        {% if postinfo.state == 'a000' or postinfo.state == '0000'  %}
+         <a href="/{{ kwd['router'] }}/_edit/{{postinfo.uid}}" class="btn btn-xs btn-warning">
+         <span class="glyphicon glyphicon-pencil"></span>
+         {{ _('Modify') }}</a>
+        <a class="btn btn-primary btn-xs" onclick="tjstate('a100')">提交审核</a>
+        {% elif postinfo.state =='a100' %}
+        <span>待审核 <a class="btn btn-warning btn-xs" onclick="tjstate('a000')">撤销提交</a>&nbsp</span>
+        {% elif postinfo.state =='b000' %}
+        <span>审核未通过 </span>
+        {% elif postinfo.state =='b100' %}
+        <span>审核通过 </span>
+        {% end %}
+    </div>
+
+    {% else %}
+    <div id="recstate" class="col-sm-7"
+         style="overflow: hidden; text-overflow:ellipsis; white-space: nowrap; display: block; ">
+        {% if postinfo.state == 'a000' %}
+        <span>更新中 </span>
+        {% elif postinfo.state =='a100' %}
+        <span>待审核 </span>
+        {% elif postinfo.state =='b000' %}
+        <span>审核未通过 </span>
+        {% elif postinfo.state =='b100' %}
+        <span>审核通过 </span>
+        {% else %}
+        {% end %}
+
+    </div>
+
+
+    {% end %}
+    {% if userinfo %}
+    <div id="shcz" class="col-sm-5">
+        {% if userinfo.role[3] >= '1' %}
+        {% if postinfo.state =='a100' %}
+            <a class="btn btn-xs btn-success" onclick="tjstate('b100')">审核通过</a>
+            <a class="btn btn-danger btn-xs" onclick="tjstate('b000')">审核不通过</a>
+        {% end %}
+        {% end %}
+    </div>
+    {% end %}
+</div>

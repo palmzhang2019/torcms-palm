@@ -1,0 +1,141 @@
+    <link rel="stylesheet" href="/static/tass/css/tabs-style.css" type="text/css">
+    <div class="row nav-container banner">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">
+                        <img src="/static/media/logo-1.png" alt="" style="height: 25px">
+                    </a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="/"  style="padding-top: 19%; padding-bottom: 0px">
+                            <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+                        </a></li>
+                        <li><a href="/post/">论坛</a></li>
+                        <li><a href="#">问答</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                热门话题 <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">杂谈</a></li>
+                                <li><a href="#">日本美食</a></li>
+                                <li><a href="#">日本生活</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">日本工作</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">日本交友</a></li>
+                                <li><a href="#">日本留学</a></li>
+                                <li><a href="#">日本玩乐</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="">关于我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav distance-left">
+                        <li>
+                            <input type="text" class="form-control search index-search" placeholder="Text input">
+                        </li>
+                        <li>
+                            <button class="btn btn-default index-search-button" type="submit">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </button>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" onclick="addQnp()">
+                                <i class="fa fa-pencil-square-o icon-style fa-2x" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/user/message" class="dropdown-toggle">
+                                <i class="fa fa-envelope-open icon-style fa-2x" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li><a href="#">
+                            <i class="fa fa-cog fa-lg icon-style fa-2x" aria-hidden="true"></i>
+                        </a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-language icon-style fa-2x" aria-hidden="true"></i> <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="divider"></li>
+                                <li><a href="#">简体中文</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">繁體中文</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">日本語</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">English</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav distance-right">
+                        <li><a href="/user/login">登录</a></li>
+                        <li><a href="/user/regist">注册</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div id="qnp" class="tab-qnp" style="display: none;">
+        <div class="pcss3t pcss3t-effect-scale pcss3t-theme-1">
+            <input type="radio" name="pcss3t" checked id="tab1" class="tab-content-first">
+            <label for="tab1" class="tab-post">Create Post</label>
+            
+            <input type="radio" name="pcss3t" id="tab2" class="tab-content-2">
+            <label for="tab2" class="tab-post" style="float: right;">Add Question</label>
+
+
+            <ul style="clear: both;">
+                <li class="tab-content tab-content-first typography">
+                    <textarea rows="11" class="form-control" aria-label="With textarea"></textarea>
+                    <p class="button-display">
+                        <button type="button" class="btn btn-default" onclick="resetBody()">Cancel</button>
+                        <button type="button" class="btn btn-primary">Submit</button>
+                    </p>
+                </li>
+
+                <li class="tab-content tab-content-2 typography">
+                    <textarea rows="11" class="form-control" aria-label="With textarea"></textarea>
+                    <p class="button-display">
+                        <button type="button" class="btn btn-default">Cancel</button>
+                        <button type="button" class="btn btn-primary">Submit</button>
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        navHeaderList = $(".nav.navbar-nav:first() li")
+
+    </script>
+
+    <script type="text/javascript">
+        function addQnp(){
+            var e = $("#qnp");
+            e.css("display", "block");
+            e.css("margin-top", "1rem")
+            var body = $(".row.body-container");
+            body.css("display", "none")
+            var body2 = $(".personal-rows");
+            body2.css("display", "none")
+        }
+
+        function resetBody() {
+            var e = $("#qnp");
+            e.css("display", "none");
+            e.css("margin-top", "1rem")
+            var body = $(".row.body-container");
+            body.css("display", "block")
+            var body2 = $(".personal-rows");
+            body2.css("display", "block")
+        }
+    </script>
