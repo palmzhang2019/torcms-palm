@@ -83,7 +83,7 @@ torcms_tester
 flasky/static
 
 static/dataset_list
-
+templates/modules/
 templates/ext_autogen/
 .pytest_cache/
 .pytest_cache
