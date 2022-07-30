@@ -1,0 +1,126 @@
+{% extends "../../tmpl_9/tpl_view.html" %}
+    {% block header %}
+    <h1>{{ header_text }}</h1>
+    {% end %}
+
+    {% block extrainfo %}
+
+    <div id="iga_view_rec_box">
+    {% if userinfo and userinfo.role[1] > '0' %}
+    <div class="row">
+    <div class="col-sm-4"><span class="des"><strong>Record</strong></span></div>
+    <div class="col-sm-8">
+    
+         {% if 'tag__record' in postinfo.extinfo %}
+          {% set tmp_var = postinfo.extinfo["tag__record"] %}
+          {% if tmp_var == "1" %}
+          RS Image
+          {% end %}
+          {% end %}
+         
+         {% if 'tag__record' in postinfo.extinfo %}
+          {% set tmp_var = postinfo.extinfo["tag__record"] %}
+          {% if tmp_var == "2" %}
+          GIS Data
+          {% end %}
+          {% end %}
+         
+         {% if 'tag__record' in postinfo.extinfo %}
+          {% set tmp_var = postinfo.extinfo["tag__record"] %}
+          {% if tmp_var == "3" %}
+          Document
+          {% end %}
+          {% end %}
+         
+         {% if 'tag__record' in postinfo.extinfo %}
+          {% set tmp_var = postinfo.extinfo["tag__record"] %}
+          {% if tmp_var == "4" %}
+          Multimedia
+          {% end %}
+          {% end %}
+         
+         {% if 'tag__record' in postinfo.extinfo %}
+          {% set tmp_var = postinfo.extinfo["tag__record"] %}
+          {% if tmp_var == "5" %}
+          Formatted Data
+          {% end %}
+          {% end %}
+         
+    </div></div>
+    {% end %}{% if userinfo and userinfo.role[1] > '0' %}
+    <div class="row">
+    <div class="col-sm-4"><span class="des"><strong>Derive</strong></span></div>
+    <div class="col-sm-8">
+    
+         {% if 'tag__derive' in postinfo.extinfo %}
+          {% set tmp_var = postinfo.extinfo["tag__derive"] %}
+          {% if tmp_var == "1" %}
+          Observation
+          {% end %}
+          {% end %}
+         
+         {% if 'tag__derive' in postinfo.extinfo %}
+          {% set tmp_var = postinfo.extinfo["tag__derive"] %}
+          {% if tmp_var == "2" %}
+          Monitor
+          {% end %}
+          {% end %}
+         
+         {% if 'tag__derive' in postinfo.extinfo %}
+          {% set tmp_var = postinfo.extinfo["tag__derive"] %}
+          {% if tmp_var == "3" %}
+          Detection
+          {% end %}
+          {% end %}
+         
+         {% if 'tag__derive' in postinfo.extinfo %}
+          {% set tmp_var = postinfo.extinfo["tag__derive"] %}
+          {% if tmp_var == "4" %}
+          General Investigation
+          {% end %}
+          {% end %}
+         
+         {% if 'tag__derive' in postinfo.extinfo %}
+          {% set tmp_var = postinfo.extinfo["tag__derive"] %}
+          {% if tmp_var == "5" %}
+          Research
+          {% end %}
+          {% end %}
+         
+         {% if 'tag__derive' in postinfo.extinfo %}
+          {% set tmp_var = postinfo.extinfo["tag__derive"] %}
+          {% if tmp_var == "6" %}
+          Field trip
+          {% end %}
+          {% end %}
+         
+         {% if 'tag__derive' in postinfo.extinfo %}
+          {% set tmp_var = postinfo.extinfo["tag__derive"] %}
+          {% if tmp_var == "7" %}
+          Digital data
+          {% end %}
+          {% end %}
+         
+         {% if 'tag__derive' in postinfo.extinfo %}
+          {% set tmp_var = postinfo.extinfo["tag__derive"] %}
+          {% if tmp_var == "8" %}
+          Data reanalysis
+          {% end %}
+          {% end %}
+         
+         {% if 'tag__derive' in postinfo.extinfo %}
+          {% set tmp_var = postinfo.extinfo["tag__derive"] %}
+          {% if tmp_var == "9" %}
+          Network capture
+          {% end %}
+          {% end %}
+         
+    </div></div>
+    {% end %}
+    </div>
+
+    {% end %}
+
+    {% block footer %}
+    <p>{{ footer_text }}</p>
+    {% end %}

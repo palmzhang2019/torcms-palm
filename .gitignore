@@ -75,20 +75,12 @@ cfg.py
 database/whoosh
 database/whoosh*
 
-static/upload/
-static/f2elib/
-static/tass/.sass-cache/
-static/tass/sass/partial
-templates/pycate/autogen/
-templates/autogen/
-
 torcms_helper
 api_doc
 api_html
 
 torcms_tester
 flasky/static
-templates/modules
 
 static/dataset_list
 

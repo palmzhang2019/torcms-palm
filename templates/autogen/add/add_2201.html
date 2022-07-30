@@ -1,0 +1,28 @@
+
+    {% extends "../../tmpl_9/tpl_add.html" %}
+
+    {% block header %}
+    <h1>{{ header_text }}</h1>
+    {% end %}
+
+    {% block extrainfo %}
+
+    <div id="iga_add_rec_box">
+    <div class="form-group">
+    <label for="tag__record" class="col-sm-2 control-label"><span>
+    <a class="glyphicon glyphicon-star" style="color: red;font-size: xx-small;"></a>
+    Record</span></label>
+    <div class="col-sm-10"><select id="tag__record" name="tag__record" class="form-control">
+    <option value="1">RS Image</option><option value="2">GIS Data</option><option value="3">Document</option><option value="4">Multimedia</option><option value="5">Formatted Data</option></select></div></div>
+    <div class="form-group">
+    <label for="tag__derive" class="col-sm-2 control-label"><span>
+    <a class="glyphicon glyphicon-star" style="color: red;font-size: xx-small;"></a>
+    Derive</span></label>
+    <div class="col-sm-10"><select id="tag__derive" name="tag__derive" class="form-control">
+    <option value="1">Observation</option><option value="2">Monitor</option><option value="3">Detection</option><option value="4">General Investigation</option><option value="5">Research</option><option value="6">Field trip</option><option value="7">Digital data</option><option value="8">Data reanalysis</option><option value="9">Network capture</option></select></div></div>
+    
+    </div>
+    {% end %}
+    {% block footer %}
+    <p>{{ footer_text }}</p>
+    {% end %}
