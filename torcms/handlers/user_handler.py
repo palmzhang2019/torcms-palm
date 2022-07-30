@@ -131,6 +131,8 @@ class UserHandler(BaseHandler):
                 self.__to_login__,
             'info':
                 self.__to_show_info__,
+            'message':
+                self.__to_message__,
             'logout':
                 self.__logout__,
             'reset-password':
@@ -389,6 +391,24 @@ class UserHandler(BaseHandler):
             tmpl = 'admin/user/puser_info.html'
         else:
             tmpl = 'user/user_info.html'
+
+        self.render(tmpl,
+                    userinfo=self.userinfo,
+                    extinfo=rec.extinfo,
+                    kwd=kwd)
+
+    @tornado.web.authenticated
+    def __to_message__(self):
+        '''
+        show the user message
+        '''
+        rec = MUser.get_by_uid(self.userinfo.uid)
+        kwd = {}
+
+        if self.is_p:
+            tmpl = 'admin/user/puser_info.html'
+        else:
+            tmpl = 'user/user_message.html'
 
         self.render(tmpl,
                     userinfo=self.userinfo,

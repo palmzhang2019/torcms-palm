@@ -80,7 +80,7 @@ a.button:hover {
   color: #0c1333;
   background-color: #fff;
   border-radius: 6px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2), 0 0 0 3px #de0840, 0 0 0px 0px rgba(0, 126, 255, 0.31);
+  /* box-shadow: 0 0 12px rgba(0, 0, 0, 0.2), 0 0 0 3px #de0840, 0 0 0px 0px rgba(0, 126, 255, 0.31); */
 }
 
 .tabs-tab-list {
