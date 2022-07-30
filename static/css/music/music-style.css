@@ -202,8 +202,8 @@ select {
 2. Remove default button styles.
 */
 
-button,
-[type='button'],
+.music button,
+.music [type='button'],
 [type='reset'],
 [type='submit'] {
   -webkit-appearance: button;

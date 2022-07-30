@@ -113,7 +113,9 @@
     <div class="container personal-container">
         {% module nav_header() %}
         {% block mainbody %}
-            {% block typebody %}{% end %}
+            <div class="personal-rows">
+                {% block typebody %}{% end %}
+            </div>
         {% end %}
     </div>
 
