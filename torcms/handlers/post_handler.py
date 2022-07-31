@@ -219,11 +219,11 @@ class PostHandler(BaseHandler):
 
         logger.info('For templates: catid: {0},  filter_view: {1}'.format(
             cat_id, self.filter_view))
-
-        if cat_id and self.filter_view:
-            tmpl = 'autogen/view/view_{0}.html'.format(cat_id)
-        else:
-            tmpl = 'post_{0}/post_view.html'.format(self.kind)
+        # if cat_id and self.filter_view:
+        #     tmpl = 'autogen/view/view_{0}.html'.format(cat_id)
+        # else:
+        #     tmpl = 'post_{0}/post_view.html'.format(self.kind)
+        tmpl = 'post_1/post_view.html'.format(self.kind)
         return tmpl
 
     def __get_cat_id(self, postinfo):

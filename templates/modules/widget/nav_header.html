@@ -39,7 +39,7 @@
                             <input type="text" class="form-control search index-search" placeholder="Text input">
                         </li>
                         <li>
-                            <button class="btn btn-default index-search-button" type="submit">
+                            <button class="btn btn-default index-search-button" type="submit" onclick="search('test')">
                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                             </button>
                         </li>
@@ -145,5 +145,9 @@
             body.css("display", "block")
             var body2 = $(".personal-rows");
             body2.css("display", "block")
+        }
+
+        function search(word) {
+            window.open( "/search/"+word+"/" );
         }
     </script>

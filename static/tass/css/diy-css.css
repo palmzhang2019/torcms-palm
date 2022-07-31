@@ -19,6 +19,9 @@
 .diy-container .author-detail {
     font-size: 12px;
 }
+.author {
+    font-size: 10px;
+}
 .diy-container .more2less a {
     cursor:pointer;
 }
@@ -171,4 +174,27 @@
     top: 30%;
     left: 27%;
     font-size:1.3em;
+}
+.search-div div.row h4 {
+    margin-left: 1rem;
+}
+.search-div div.row .search-pane {
+    padding: 10px 0
+}
+.search-div div.row div.col-xs-4 {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.search-div .row.search-detail h4 {
+    margin-left: 0px;
+}
+.search-div div.search-detail {
+    padding: 10px 0;
+    word-wrap: break-word;
+    word-break: break-all;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-bottom: 2px solid blue;
+    padding-bottom: 1rem;
+    height: 15rem;
 }
