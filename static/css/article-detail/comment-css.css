@@ -6,7 +6,8 @@ div.comments img { display:inline-block; }
 div.comments :focus { outline: 0; }
 div.comments li {display: list-item;text-align: -webkit-match-parent;}
 div.comments em, i, u {font-style: normal;}
-div.comments h1, h2, h3, h4, h5, h6 {font-weight: normal; font-family:"Microsoft YaHei" }
+div.comments h1, h2, h3, h5, h6 {font-weight: normal; font-family:"Microsoft YaHei" }
+h4.care-about {font-family:"Microsoft YaHei"; font-weight: 900; margin-top:10px; margin-bottom: 10px;}
 div.comments abbr, acronym { border: 0; font-variant: normal; }
 div.comments input, button, textarea, select, optgroup, option { font-family: inherit; font-size: inherit; font-style: inherit; font-weight: inherit; }
 div.comments code, kbd, samp, tt { font-size:100%; }

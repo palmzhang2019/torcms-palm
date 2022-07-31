@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+:root {
+  --primary-color: #185ee0;
+  --secondary-color: #e6eef9;
+}
+
+div.row.index-content *,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+div.row.index-content body {
+  font-family: "Inter", sans-serif;
+  background-color: rgba(230, 238, 249, 0.5);
+}
+
+div.row.index-content .container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.row.index-content .tabs {
+  display: flex;
+  position: relative;
+  background-color: #fff;
+  padding: 0.75rem;
+  border-radius: 99px;
+}
+.tabs * {
+  z-index: 2;
+}
+
+div.row.index-content input[type=radio] {
+  display: none;
+}
+
+div.row.index-content .tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 54px;
+  width: 50%;
+  font-size: 1.25rem;
+  font-weight: 500;
+  border-radius: 99px;
+  cursor: pointer;
+  transition: color 0.15s ease-in;
+}
+
+div.row.index-content .notification {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.85rem;
+  height: 2rem;
+  margin-left: 0.75rem;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  transition: 0.15s ease-in;
+}
+
+div.row.index-content input[type=radio]:checked + label {
+  color: var(--primary-color);
+}
+div.row.index-content input[type=radio]:checked + label > .notification {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+div.row.index-content input[id=radio-1]:checked ~ .glider {
+  transform: translateX(0);
+}
+
+div.row.index-content input[id=radio-2]:checked ~ .glider {
+  transform: translateX(100%);
+}
+
+div.row.index-content input[id=radio-3]:checked ~ .glider {
+  transform: translateX(200%);
+}
+
+div.row.index-content .glider {
+  position: absolute;
+  display: flex;
+  height: 54px;
+  width: 49%;
+  background-color: var(--secondary-color);
+  z-index: 1;
+  border-radius: 99px;
+  transition: 0.25s ease-out;
+}
+
+@media (max-width: 700px) {
+  .tabs {
+    transform: scale(0.6);
+  }
+}

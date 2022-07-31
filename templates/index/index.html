@@ -5,69 +5,106 @@
 
 {% block mainbody %}
 <div class="row index-content">
-    <div>
-        <div class="row title">
-            <h4><a href="/info/9f840">Title</a></h4>
-            <p class="author-detail">發文者:<a href="">尼安德特人</a> </p>
+    <link rel="stylesheet" href="/static/css/tab-switch/tab-switch.css">
+	<div class="tabs">
+		<input type="radio" id="radio-1" name="tabs" onclick="switchOptions(this)" checked />
+		<label class="tab" for="radio-1">论坛</label>
+		<input type="radio" id="radio-2" name="tabs" onclick="switchOptions(this)"/>
+		<label class="tab" for="radio-2">问答<span class="notification">2</span></label>
+		<span class="glider"></span>
+	</div>
+    <div id="post-artciles">
+        <div>
+            <div class="row title">
+                <h4><a href="/info/9f840">Title</a></h4>
+                <p class="author-detail">發文者:<a href="">尼安德特人</a> </p>
+            </div>
+            <div class="row more2less">
+                <span><a onclick="collapse(this, 1)"><b>more</b></a></span>
+                <span style="display: none"><a onclick="collapse(this, 2)"><b>less</b></a></span>
+            </div>
+            <div class="index-details">
+            </div>
+            <div class="row post-detail">
+                <p>初次發布時刻: YYYY/MM/DD HH:mm:ss</p>
+                <p>內容更新時刻: YYYY/MM/DD HH:mm:ss</p>
+            </div>
+            <div class="row more2less">
+                <span><a onclick="collapse(this, 1)"><b>more</b></a></span>
+                <span style="display: none"><a onclick="collapse(this, 2)"><b>less</b></a></span>
+            </div>
+            <hr />
         </div>
-        <div class="row more2less">
-            <span><a onclick="collapse(this, 1)"><b>more</b></a></span>
-            <span style="display: none"><a onclick="collapse(this, 2)"><b>less</b></a></span>
+        <div>
+            <div class="row title">
+                <h4>Title</h4>
+                <p class="author-detail">發文者:<a href="">尼安德特人</a> </p>
+            </div>
+            <div class="row more2less">
+                <span><a onclick="collapse(this, 1)"><b>more</b></a></span>
+                <span style="display: none"><a onclick="collapse(this, 2)"><b>less</b></a></span>
+            </div>
+            <div class="index-details">
+            </div>
+            <div class="row post-detail">
+                <p>初次發布時刻: YYYY/MM/DD HH:mm:ss</p>
+                <p>內容更新時刻: YYYY/MM/DD HH:mm:ss</p>
+            </div>
+            <div class="row more2less">
+                <span><a onclick="collapse(this, 1)"><b>more</b></a></span>
+                <span style="display: none"><a onclick="collapse(this, 2)"><b>less</b></a></span>
+            </div>
+            <hr />
         </div>
-        <div class="index-details">
-        </div>
-        <div class="row post-detail">
-            <p>初次發布時刻: YYYY/MM/DD HH:mm:ss</p>
-            <p>內容更新時刻: YYYY/MM/DD HH:mm:ss</p>
-        </div>
-        <div class="row more2less">
-            <span><a onclick="collapse(this, 1)"><b>more</b></a></span>
-            <span style="display: none"><a onclick="collapse(this, 2)"><b>less</b></a></span>
-        </div>
-        <hr />
     </div>
-    <div>
-        <div class="row title">
-            <h4>Title</h4>
-            <p class="author-detail">發文者:<a href="">尼安德特人</a> </p>
+    <div id="questions">
+        <div class="question-card">
+            <div class="row">
+                <div class="col-xs-3 author-avatar"><img src="/static/upload/avatar1.jpg" alt=""></div>
+                <div class="col-xs-3 author-name">尼安德特人</div>
+            </div>
+            <div class="row question-title">
+                Why are Chinese characters wearing Korean traditional clothing in historical Chinese dramas, and why is this phenomenon increasingly observed in recent years?
+            </div>
+            <div class="row descriptions">
+                <p>
+descriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptions
+descriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptions
+descriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptions
+                </p>
+            </div>
+            <div class="row question-components">
+                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-comment" aria-hidden="true">11</span>
+            </div>
         </div>
-        <div class="row more2less">
-            <span><a onclick="collapse(this, 1)"><b>more</b></a></span>
-            <span style="display: none"><a onclick="collapse(this, 2)"><b>less</b></a></span>
+        <div class="question-card">
+            <div class="row">
+                <div class="col-xs-3 author-avatar"><img src="/static/upload/avatar1.jpg" alt=""></div>
+                <div class="col-xs-3 author-name">尼安德特人</div>
+            </div>
+            <div class="row question-title">
+                Why are Chinese characters wearing Korean traditional clothing in historical Chinese dramas, and why is this phenomenon increasingly observed in recent years?
+            </div>
+            <div class="row descriptions">
+                <p>
+descriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptions
+descriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptions
+descriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptions
+                </p>
+            </div>
+            <div class="row question-components">
+                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-comment" aria-hidden="true">11</span>
+            </div>
         </div>
-        <div class="index-details">
-        </div>
-        <div class="row post-detail">
-            <p>初次發布時刻: YYYY/MM/DD HH:mm:ss</p>
-            <p>內容更新時刻: YYYY/MM/DD HH:mm:ss</p>
-        </div>
-        <div class="row more2less">
-            <span><a onclick="collapse(this, 1)"><b>more</b></a></span>
-            <span style="display: none"><a onclick="collapse(this, 2)"><b>less</b></a></span>
-        </div>
-        <hr />
     </div>
-    <div>
-        <div class="row title">
-            <h4>Title</h4>
-            <p class="author-detail">發文者:<a href="">尼安德特人</a> </p>
-        </div>
-        <div class="row more2less">
-            <span><a onclick="collapse(tFhis, 1)"><b>more</b></a></span>
-            <span style="display: none"><a onclick="collapse(this, 2)"><b>less</b></a></span>
-        </div>
-        <div class="index-details">
-        </div>
-        <div class="row post-detail">
-            <p>初次發布時刻: YYYY/MM/DD HH:mm:ss</p>
-            <p>內容更新時刻: YYYY/MM/DD HH:mm:ss</p>
-        </div>
-        <div class="row more2less">
-            <span><a onclick="collapse(this, 1)"><b>more</b></a></span>
-            <span style="display: none"><a onclick="collapse(this, 2)"><b>less</b></a></span>
-        </div>
-        <hr />
-    </div>
+
+
 </div>
 
 <script type="text/javascript">
@@ -119,6 +156,17 @@
             }
             e.parentNode.style.display = "none"
             e.parentNode.previousElementSibling.style.display = ""
+        }
+    }
+</script>
+<script type="text/javascript">
+    function switchOptions(e){
+        if (e.id == "radio-1") {
+            $("#post-artciles").css("display", "block")
+            $("#questions").css("display", "none")
+        }else{
+            $("#post-artciles").css("display", "none")
+            $("#questions").css("display", "block")
         }
     }
 </script>

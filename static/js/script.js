@@ -37,13 +37,13 @@ Amplitude.init({
         }
     },
     "songs": [
-//		{
-//			"name": "First Snow",
-//			"artist": "Emancipator",
-//			"album": "Soon It Will Be Cold Enough",
-//			"url": "https://521dimensions.com/song/FirstSnow-Emancipator.mp3",
-//			"cover_art_url": "https://521dimensions.com/img/open-source/amplitudejs/album-art/soon-it-will-be-cold-enough.jpg"
-//		},
+		{
+			"name": "First Snow",
+			"artist": "Emancipator",
+			"album": "Soon It Will Be Cold Enough",
+			"url": "https://521dimensions.com/song/FirstSnow-Emancipator.mp3",
+			"cover_art_url": "https://521dimensions.com/img/open-source/amplitudejs/album-art/soon-it-will-be-cold-enough.jpg"
+		},
     ]
 });
 

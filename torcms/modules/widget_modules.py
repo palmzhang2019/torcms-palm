@@ -181,6 +181,10 @@ class Navigation_header(tornado.web.UIModule):
         return self.render_string('modules/widget/nav_header.html')
 
 
+class Cares_about(tornado.web.UIModule):
+    def render(self, *args, **kwargs):
+        return self.render_string('modules/widget/cares_about.html')
+
 class CommentList(tornado.web.UIModule):
     '''
     reply list
