@@ -178,7 +178,7 @@ class Navigation_menu(tornado.web.UIModule):
 
 class Navigation_header(tornado.web.UIModule):
     def render(self, *args, **kwargs):
-        return self.render_string('modules/widget/nav_header.html')
+        return self.render_string('modules/widget/nav_header.html', userinfo=args[0])
 
 
 class Cares_about(tornado.web.UIModule):
