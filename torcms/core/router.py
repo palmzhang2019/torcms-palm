@@ -21,6 +21,7 @@ from torcms.handlers.page_ajax_handler import PageAjaxHandler
 from torcms.handlers.page_handler import PageHandler
 from torcms.handlers.post_ajax_handler import PostAjaxHandler
 from torcms.handlers.post_handler import PostHandler
+from torcms.handlers.qa_handler import QAHandler
 from torcms.handlers.post_history_handler import PostHistoryHandler
 from torcms.handlers.post_list_handler import PostListHandler
 from torcms.handlers.publish_handler import PublishHandler
@@ -49,6 +50,7 @@ urls = [
     # For listing items.
     ("/list/(.*)", ListHandler, {}),
     ("/post/(.*)", PostHandler, dict(kind='1')),
+    ("/qa/(.*)", QAHandler, dict(kind='1')),
 
     # For listing ordered items.
     ("/catalog/(.*)", CatalogHandler, {}),
