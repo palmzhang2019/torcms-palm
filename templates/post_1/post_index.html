@@ -1,12 +1,22 @@
 {% extends "../theme/bage.html" %}
 {% block forum %}
+<div class="row" id="forum-card">
+    <div class="col-xs-2 plate pane-active" style="background-color: #4e99d2; border-color: #ff747b"><span><a href="">杂谈</a></span></div>
+    <div class="col-xs-2 plate" style="background-color: #94cf8b; border-color: #fa934e"><span><a href="">户外</a></span></div>
+    <div class="col-xs-2 plate" style="background-color: #ff747b; border-color: #9198dc"><span><a href="">生活</a></span></div>
+    <div class="col-xs-2 plate" style="background-color: #fa934e; border-color: #9198dc"><span><a href="">留学</a></span></div>
+    <div class="col-xs-2 plate" style="background-color: #9198dc; border-color: #ff747b"><span><a href="">交友</a></span></div>
+    <div class="col-xs-2 plate" style="background-color: #f7f033; border-color: #fa934e"><span><a href="">工作</a></span></div>
+</div>
+<script type="text/javascript">
+    var dom = $("#forum-card div.col-xs-2.plate");
+    dom.bind("click", function(){
+        dom.removeClass("pane-active")
+        $(this).addClass("pane-active")
+    })
+</script>
 <div class="row">
-    <div class="col-xs-2 plate" style="background-color: #4e99d2;"><span><a href="">杂谈</a></span></div>
-    <div class="col-xs-2 plate" style="background-color: #94cf8b;"><span><a href="">户外</a></span></div>
-    <div class="col-xs-2 plate" style="background-color: #ff747b;"><span><a href="">生活</a></span></div>
-    <div class="col-xs-2 plate" style="background-color: #fa934e;"><span><a href="">留学</a></span></div>
-    <div class="col-xs-2 plate" style="background-color: #9198dc;"><span><a href="">交友</a></span></div>
-    <div class="col-xs-2 plate" style="background-color: #f7f033;"><span><a href="">工作</a></span></div>
+
 </div>
 {% end %}
 {% block typebody %}
