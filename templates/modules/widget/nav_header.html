@@ -30,16 +30,16 @@
                                 <li><a href="/label/1/rgyk">日本玩乐</a></li>
                             </ul>
                         </li>
-                        <li><a href="">关于我们</a></li>
+                        <li><a href="/page/about_torcms">关于我们</a></li>
                     </ul>
                 </div>
                 <div>
                     <ul class="nav navbar-nav distance-left">
                         <li>
-                            <input type="text" class="form-control search index-search" placeholder="Text input">
+                            <input type="text" id="search-pane" class="form-control search index-search" placeholder="Text input">
                         </li>
                         <li>
-                            <button class="btn btn-default index-search-button" type="submit" onclick="search('test')">
+                            <button class="btn btn-default index-search-button" type="submit" onclick="search()">
                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                             </button>
                         </li>
@@ -157,6 +157,9 @@
         }
 
         function search(word) {
-            window.open( "/search/"+word+"/" );
+            var word = $("#search-pane").val();
+            if (word) {
+                window.open( "/search/"+word+"/" );
+            }
         }
     </script>
