@@ -34,4 +34,5 @@ class IndexHandler(BaseHandler):
             cfg=CMS_CFG,
             view=MPost.query_most_pic(20),
             kwd={},
+            weather_data = self.get_weather_data()
         )

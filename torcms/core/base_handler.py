@@ -14,6 +14,9 @@ from torcms.model.user_model import MUser
 from config import kind_arr, post_type
 from config import CMS_CFG
 
+from torcms.core.torcms_redis import redisvr
+import json
+
 
 class BaseHandler(tornado.web.RequestHandler):
     '''
@@ -155,3 +158,8 @@ class BaseHandler(tornado.web.RequestHandler):
             }
         self.set_status(404)
         self.render('misc/html/404.html', kwd=kwd, userinfo=self.userinfo)
+
+    def get_weather_data(self):
+        weather_data=redisvr.get("weather_data")
+        weather_data=json.loads(weather_data)
+        return weather_data

@@ -83,5 +83,5 @@ urls = [
     ('/nullify_info/(.*)', NullifyInfoHandler, {}),
     ('/comment/(.*)', CommentHandler, {}),
     ('/classify/(.*)', ClassifyHandler, {}),
-    ("/", IndexHandler, {})
+    ("/", IndexHandler, {}),
 ]
