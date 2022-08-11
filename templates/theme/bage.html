@@ -111,7 +111,7 @@
 
 </head>
 
-<body class="body-style">
+<body class="body-style" onload="load_tree()">
 
     <div class="container diy-container">
         {% module nav_header(userinfo) %}
@@ -392,23 +392,8 @@
             </div>
             {% block news_or_banner %}
             {% end %}
-            <div class="row">
-                <div class="text-muted text-center"><h4>最新人氣文章</h4></div>
-                <ul class="list-group">
-                  <li class="list-group-item"><span>1. </span>Cras justo odio</li>
-                  <li class="list-group-item"><span>2. </span>Dapibus ac facilisis in</li>
-                  <li class="list-group-item"><span>3. </span>Morbi leo risus</li>
-                  <li class="list-group-item"><span>4. </span>Porta ac consectetur ac</li>
-                  <li class="list-group-item"><span>5. </span>Vestibulum at eros</li>
-                  <li class="list-group-item"><span>6. </span>Vestibulum at eros</li>
-                  <li class="list-group-item"><span>7. </span>Vestibulum at eros</li>
-                  <li class="list-group-item"><span>8. </span>Vestibulum at eros</li>
-                  <li class="list-group-item"><span>9. </span>Vestibulum at eros</li>
-                  <li class="list-group-item"><span>10. </span>Vestibulum at eros</li>
-                  <li class="list-group-item"><span>11. </span>Vestibulum at eros</li>
-                  <li class="list-group-item"><span>12. </span>Vestibulum at eros</li>
-                </ul>
-            </div>
+            {% block ninnki %}
+            {% end %}
             <div class="row tag-cloud">
                 <ul>
                     <li><a href="#">tag<span>20</span></a></li>
@@ -438,29 +423,6 @@
 
     </div>
     <script src="/static/bootstrap-treeview/src/js/bootstrap-treeview.js"></script>
-    <script type="text/javascript">
-        var dataUrl = "/static/tmp/menu.json"
-        var request = new XMLHttpRequest();
-        request.open("get", dataUrl)
-        request.send(null)
-        request.onload = function(){
-            if (request.status == 200) {
-                var data = request.responseText
-                $('#tree').treeview({data: data});
-            }
-        }
-
-        var dataUrl2 = "/static/tmp/author-tree.json"
-        var request2 = new XMLHttpRequest();
-        request2.open("get", dataUrl2)
-        request2.send(null)
-        request2.onload = function(){
-            if (request.status == 200) {
-                var data2 = request2.responseText
-                $('#author-tree').treeview({data: data2});
-            }
-        }
-    </script>
     <script type="text/javascript">
         var ad = document.getElementById("ad")
         var adRow = ad.parentNode

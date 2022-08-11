@@ -86,3 +86,44 @@ class AuthorTreeHander(RequestHandler):
         # 允许跨域访问
         self.set_header("Access-Control-Allow-Origin", "*")
         self.write(json.dumps(self.data))
+
+
+class MenuTreeHander(RequestHandler):
+
+    data = [
+        {
+    "text": "日本生活討論版",
+    "nodes": [
+      {
+        "text": "No Food, No Life",
+        "nodes": [
+          {
+            "text": "美食介紹"
+          },
+          {
+            "text": "自家料理"
+          }
+        ]
+      },
+      {
+        "text": "購物指南",
+        "nodes": [
+          {
+            "text": "留學-初來乍到"
+          },
+          {
+            "text": "交通-定期券"
+          }
+        ]
+      },
+      {
+        "text": "簽證手續"
+      }
+    ]
+  }
+    ]
+
+    def get(self):
+        # 允许跨域访问
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.write(json.dumps(self.data))

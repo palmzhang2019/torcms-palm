@@ -1,3 +1,30 @@
+<script type="text/javascript">
+function load_tree(){
+        var dataUrl = "/menu-tree"
+        var request = new XMLHttpRequest();
+        request.open("get", dataUrl)
+        request.send(null)
+        request.onload = function(){
+            if (request.status == 200) {
+                var data = request.responseText
+                console.log(data);
+                $('#tree').treeview({data: data});
+            }
+        }
+
+        var dataUrl2 = "/author-tree"
+        var request2 = new XMLHttpRequest();
+        request2.open("get", dataUrl2)
+        request2.send(null)
+        request2.onload = function(){
+            if (request.status == 200) {
+                var data2 = request2.responseText
+                $('#author-tree').treeview({data: data2});
+            }
+        }
+}
+    </script>
+
 <div class="row">
     <h4 class="care-about">关注的板块</h4>
     <div id="tree"></div>
