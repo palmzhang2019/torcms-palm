@@ -441,7 +441,7 @@ var e = {
 				} else {
 						style.setAttribute('href', '/static/assets/css/style.css');
 				}
-				
+
 				localStorage.setItem("data-theme", 'light') // save theme to local storage
 			}
 

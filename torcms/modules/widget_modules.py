@@ -264,3 +264,11 @@ class Check_pager(tornado.web.UIModule):
                                   pager_num=page_num,
                                   page_current=current,
                                   state=state)
+
+class Navigation_header(tornado.web.UIModule):
+    def render(self, *args, **kwargs):
+        return self.render_string('modules/widget/nav_header.html', userinfo=args[0])
+
+class Cares_about(tornado.web.UIModule):
+    def render(self, *args, **kwargs):
+        return self.render_string('modules/widget/cares_about.html')

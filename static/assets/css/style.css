@@ -8605,8 +8605,11 @@ textarea.form-control-lg {
 
 .text-center {
   text-align: center !important;
+  font-size: small;
 }
-
+.tennki {
+    font-size: larger;
+}
 .text-decoration-none {
   text-decoration: none !important;
 }
@@ -16848,6 +16851,15 @@ html[data-theme=dark] .light-mode-item {
     min-width: 100%;
     max-width: 100%;
   }
+}
+div.row.music {
+    margin-top: 1rem;
+}
+div.tennki-topic {
+    padding-top:0.5rem;
+    padding-bottom: 0.5rem;
+    background-color: #fff;
+    border-radius: 12px;
 }
 /*User CSS*/
 /*# sourceMappingURL=style.css.map */

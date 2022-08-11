@@ -71,6 +71,8 @@ core_modules = {
     'upload_pic': widget_modules.UploadPicture,
     'upload_file': widget_modules.UploadFile,
     'nav_menu': widget_modules.Navigation_menu,
+    'nav_header': widget_modules.Navigation_header,
+    'cares_about': widget_modules.Cares_about,
 
     # Infor
     'app_catalog_of': info_modules.InfoCategory,
