@@ -693,7 +693,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .px-10 {
-  padding-left: 2.5rem;
+  padding-left: 0.5rem;
   padding-right: 2.5rem;
 }
 
