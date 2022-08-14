@@ -70,16 +70,16 @@
     <div class="row">
         <div class="col-xs-12">
                         <div class="row title">
-                            <h2>Title</h2>
+                            <h2>{{ postinfo.title }}</h2>
                         </div>
                         <div class="banner">
                             <img src="/static/media/article-banner.png" style="height: 180px; width: 100%" alt="">
                         </div>
                         <div class="row author">
-                            作者: 尼安德特人 ; 發行時間: 2022年7月31日
+                            作者: {{ postinfo.user_name }} ; 發行時間: {{ datetime.datetime.fromtimestamp(postinfo.time_create).strftime('%Y-%m-%d %H:%M:%S')}}; 浏览次数: {{ postinfo.view_count }}
                         </div>
                         <div class="row">
-                            標簽: <span><a href="/label/1/rgyk">历史</a></span>; <span><a href="/label/1/rgyk">文化</a></span>; <span><a href="/label/1/rgyk">艺术</a></span>
+                            標簽: {% module post_labels(post_uid = postinfo.uid) %}
                         </div>
                         <div class="row">
                             <span>收藏</span>
@@ -88,21 +88,7 @@
                         </div>
                         <div class="row">
                             <div class="article-detail">
-                                <p>
-赶不完的进度，做不完的工作，开不完的会......对项目经理来说，时间似乎永远不够用。项目经理作为团队 leader ，要深谙时间管理的流程方法，才能避免浪费组织的时间和资源，成为优秀的项目经理。
-                                </p>
-                                <p>
-项目管理过程中，实现项目的最终交付，大概是项目经理的终极目标。但项目执行过程中，往往会因或大或小的突发问题，导致项目的延期。任何一个项目都无法回避最终交付日期，并且所有的活动都严格围绕时间坐标进行。因此，对项目进行合理的时间管理，才是保证项目顺利交付的关键。那么，如何才能做好项目时间管理呢？
-                                </p>
-                                <p>
-定义项目范围，注重分解工作项目范围如果不能在初期清晰定义，将会给后续项目开展带来困惑，严重的还能导致项目失败。因此，对项目进行定义是首要解决的问题，项目正式进行前，就要考虑诸多因素，要对项目范围、主体计划等，做出明确的界定。对项目范围定义后，最重要的一项工作是对项目任务进行细化和分解，将它分解为更小、更易管理的工作包，这些小的活动都是确保完成交付产品的、可实施的详细任务。我们可以借鉴以下三种方法：第一 结构化分解方法
-                                </p>
-                                <p>
-                                    工作分解结构法（ Work Breakdown Structure，缩写：WBS ）是一个描述思路的规划和设计的工具，它以项目结果为导向，将抽象的概念或任务分解成具体工作。
-                                </p>
-                                <p>
-                                    它是一个有拆有合的过程，拿工程技术系统来说，按照规则可分解成子系统、功能区和专业三大块；项目的目标系统可以分解成系统目标、子目标、可执行目标；项目的总成本分解为相关成本要素；此外，组织系统、管理信息系统也都可以再进行结构分解。这些过程是项目能否成功交付的关键要素。
-                                </p>
+                                {% raw unescape(postinfo.cnt_html) %}
                             </div>
                         </div>
                         <div class="row">
