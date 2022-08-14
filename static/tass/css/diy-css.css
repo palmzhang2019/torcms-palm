@@ -1,8 +1,24 @@
 .diy-container .row {
-    margin-top:8px;
+    margin-top:12px;
     margin-left:-5px;
     margin-right:-5px;
     background-color: #fff;
+    border-radius: 6px;
+}
+div.diy-container div.row banner {
+    border-radius: 6px;
+}
+div.diy-container div#myCarousel {
+    border-radius: 6px;
+}
+div.diy-container div.carousel-inner {
+    border-radius: 6px;
+}
+div.diy-container div.carousel-inner div.item {
+    border-radius: 6px;
+}
+div.diy-container div.carousel-inner div.item img{
+    border-radius: 6px;
 }
 .diy-container .more2less {
     text-align: right;
