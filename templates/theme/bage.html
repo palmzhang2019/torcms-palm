@@ -118,22 +118,8 @@
         {% module nav_header(userinfo) %}
         <div class="row body-container">
             <div class="col-xs-3">
-                <div class="row tennki-topic">
-                    <div class="col-lg-4">
-                        <div class="text-center tennki"><i class="qi-301"></i></div>
-                        <div class="text-center name">東京</div>
-                        <div class="text-center temperature">20°C-26°C</div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="text-center tennki"><i class="qi-301"></i></div>
-                        <div class="text-center name">東京</div>
-                        <div class="text-center temperature">20°C-26°C</div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="text-center tennki"><i class="qi-301"></i></div>
-                        <div class="text-center name">東京</div>
-                        <div class="text-center temperature">20°C-26°C</div>
-                    </div>
+                <div class="row tennki-topic" id="d12">
+                    {% module weather() %}
                 </div>
                 <div class="row music">
                     <div class="absolute right-4 top-4 music">

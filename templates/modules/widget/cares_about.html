@@ -7,7 +7,6 @@ function load_tree(){
         request.onload = function(){
             if (request.status == 200) {
                 var data = request.responseText
-                console.log(data);
                 $('#tree').treeview({data: data});
             }
         }

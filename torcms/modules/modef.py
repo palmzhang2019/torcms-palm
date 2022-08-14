@@ -73,6 +73,7 @@ core_modules = {
     'nav_menu': widget_modules.Navigation_menu,
     'nav_header': widget_modules.Navigation_header,
     'cares_about': widget_modules.Cares_about,
+    'weather': widget_modules.Weather,
     # Infor
     'app_catalog_of': info_modules.InfoCategory,
     'parentname': info_modules.ParentName,

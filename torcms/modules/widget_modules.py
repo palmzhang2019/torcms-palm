@@ -4,7 +4,8 @@ Define the widget modules for TorCMS.
 '''
 import tornado.escape
 import tornado.web
-
+from torcms.core.torcms_redis import redisvr
+import json
 import config
 from torcms.model.category_model import MCategory
 from torcms.model.rating_model import MRating
@@ -12,7 +13,7 @@ from torcms.model.reply_model import MReply
 from torcms.model.replyid_model import MReplyid
 from torcms.model.user_model import MUser
 from torcms.model.post_model import MPost
-
+import time
 
 class BaiduShare(tornado.web.UIModule):
     '''
@@ -184,6 +185,26 @@ class Navigation_header(tornado.web.UIModule):
 class Cares_about(tornado.web.UIModule):
     def render(self, *args, **kwargs):
         return self.render_string('modules/widget/cares_about.html')
+
+class Weather(tornado.web.UIModule):
+
+    def get_weather_data(self):
+        weather_data=redisvr.get("weather_data")
+        weather_data=json.loads(weather_data)
+        return weather_data
+
+    def split_text(self, text):
+        hour_int = time.localtime(time.time()).tm_hour
+        if " " in text:
+            weather_f = "-".join(text.split(" ")).lower()
+        else:
+            weather_f = text.lower()
+        if hour_int > 17 or hour_int < 7:
+            weather_f += "-night"
+            return weather_f
+
+    def render(self, *args, **kwargs):
+        return self.render_string('modules/widget/weather.html', weather_data=self.get_weather_data(), split_text=self.split_text)
 
 class CommentList(tornado.web.UIModule):
     '''

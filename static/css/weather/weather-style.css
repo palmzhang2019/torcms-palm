@@ -435,6 +435,11 @@ left:50%;
     height: auto;
 }
 
-div.row.weather-background {
-    
+div.tennki-topic {
+    padding-top:0.5rem;
+    padding-bottom: 0.5rem;
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    white-space:nowrap;
 }

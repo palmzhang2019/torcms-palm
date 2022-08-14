@@ -1,0 +1,57 @@
+{% for data in weather_data %}
+<div class="col-lg-4">
+    <div class="text-center tennki"><i class="qi-{{ split_text(data['text']) }}"></i></div>
+    <div class="text-center temperature">{{ data['temp'] }}°C</div>
+    <div class="text-center name">{{ data['city'] }}</div>
+</div>
+{% end %}
+
+<style>
+    div.tennki-topic div:nth-child(n+4):nth-child(-n+9) {
+        display: none
+    }
+</style>
+
+<script type="text/javascript">
+    function ii() {
+        var divs = $("div.row.tennki-topic div.col-lg-4");
+        if (divs.eq(0).css("display") == "none") {
+            divs.eq(0).css("display", "block");
+            divs.eq(1).css("display", "block");
+            divs.eq(2).css("display", "block");
+            divs.eq(3).css("display", "none");
+            divs.eq(4).css("display", "none");
+            divs.eq(5).css("display", "none");
+            divs.eq(6).css("display", "none");
+            divs.eq(7).css("display", "none");
+            divs.eq(8).css("display", "none");
+        } else if (divs.eq(3).css("display") == "none") {
+            divs.eq(0).css("display", "none");
+            divs.eq(1).css("display", "none");
+            divs.eq(2).css("display", "none");
+            divs.eq(3).css("display", "block");
+            divs.eq(4).css("display", "block");
+            divs.eq(5).css("display", "block");
+            divs.eq(6).css("display", "none");
+            divs.eq(7).css("display", "none");
+            divs.eq(8).css("display", "none");
+        } else {
+            divs.eq(0).css("display", "none");
+            divs.eq(1).css("display", "none");
+            divs.eq(2).css("display", "none");
+            divs.eq(3).css("display", "none");
+            divs.eq(4).css("display", "none");
+            divs.eq(5).css("display", "none");
+            divs.eq(6).css("display", "block");
+            divs.eq(7).css("display", "block");
+            divs.eq(8).css("display", "block");
+        }
+
+    }
+
+    $(function(){
+        t = setInterval("ii()", 3000);
+
+    })
+
+</script>

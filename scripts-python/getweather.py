@@ -6,7 +6,7 @@ import json
 
 weather_list = []
 for top_city in top_citys:
-    wurl = f"https://devapi.qweather.com/v7/weather/now?key=f0e7fdf927f641cdabaf2419ef938121&location={top_city['id']}&lang=ja"
+    wurl = f"https://devapi.qweather.com/v7/weather/now?key=f0e7fdf927f641cdabaf2419ef938121&location={top_city['id']}&lang=en"
     response = requests.get(wurl)
     weather_data = json.loads(response.text)
     if weather_data['code'] == "200":

@@ -223,7 +223,7 @@ descriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescript
         request3.open("get", dataUrl3)
         request3.send(null)
         request3.onload = function(){
-            if (request.status == 200) {
+            if (request3.status == 200) {
                 var detailList = request3.responseText
                 details = $('.index-details')
                 for (let i=0; i<details.length; i++) {
@@ -235,38 +235,7 @@ descriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescriptionsdescript
         }
     })
 </script>
-<script type="text/javascript">
-    function collapse(e, flag) {
-        var dataUrl3 = "/static/tmp/tmp_content.json"
-        var request3 = new XMLHttpRequest();
-        request3.open("get", dataUrl3)
-        request3.send(null)
-        targetDetail = e.parentNode.parentNode.parentNode.getElementsByClassName("index-details")[0]
 
-        if (flag === 1){
-            request3.onload = function(){
-                if (request.status == 200) {
-                    var detailList = request3.responseText
-                    innerText = JSON.parse(detailList)[0].content
-                    targetDetail.innerHTML = "<p>"+innerText+"</p>"
-                }
-            }
-            e.parentNode.style.display = "none"
-            e.parentNode.nextElementSibling.style.display = ""
-        } else{
-            request3.onload = function(){
-                if (request.status == 200) {
-                    var detailList = request3.responseText
-                    innerText = JSON.parse(detailList)[0].content
-                    var smallText = innerText.substr(0,450)
-                    targetDetail.innerHTML = "<p>"+smallText+"</p>"
-                }
-            }
-            e.parentNode.style.display = "none"
-            e.parentNode.previousElementSibling.style.display = ""
-        }
-    }
-</script>
 <script type="text/javascript">
     function switchOptions(e){
     console.log(e);
