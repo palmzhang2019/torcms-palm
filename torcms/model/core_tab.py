@@ -238,6 +238,10 @@ class TabMember(BaseModel):
                            primary_key=True,
                            max_length=36,
                            help_text='')
+    user_avatar = peewee.CharField(null=False,
+                           unique=False,
+                           max_length=255,
+                           help_text='User Avatar')
     user_name = peewee.CharField(null=False,
                                  index=True,
                                  unique=True,

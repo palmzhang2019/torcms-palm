@@ -515,7 +515,7 @@ class UserHandler(BaseHandler):
                         cfg=config.CMS_CFG,
                         kwd=kwd,
                         userinfo=None)
-        if form.validate():
+        if form.validate() or ckemail is None:
             res_dic = MUser.create_user(post_data)
             if res_dic['success']:
                 self.redirect('/user/login')

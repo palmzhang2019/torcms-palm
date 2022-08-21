@@ -77,7 +77,27 @@ def run_migrate(*args):
 
     print('Begin migrate ...')
 
+    # user_avatar = peewee.CharField(null=False,
+    #                        unique=False,
+    #                        max_length=255,
+    #                        help_text='User Avatar')
+
+
     torcms_migrator = migrate.PostgresqlMigrator(config.DB_CON)
+
+    ###########################################################################################
+    user_avatar = migrate.CharField(null=False,
+                                    max_length=255,
+                                    default='',
+                                    help_text='User Avatar')
+    try:
+        migrate.migrate(
+            torcms_migrator.add_column('tabmember', 'user_avatar', user_avatar)
+        )
+    except Exception as err:
+        print(repr(err))
+
+    ###########################################################################################
 
     ###########################################################################################
     state_field = migrate.CharField(null=False,

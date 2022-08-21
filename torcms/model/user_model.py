@@ -317,13 +317,16 @@ class MUser():
             out_dic['code'] = '11'
             return out_dic
 
-        if not tools.check_email_valid(post_data['user_email']):
-            out_dic['code'] = '21'
-            return out_dic
+        if post_data['user_email'] == "":
+            post_data['user_email'] = ""
+        else:
+            if not tools.check_email_valid(post_data['user_email']):
+                out_dic['code'] = '21'
+                return out_dic
 
-        if MUser.get_by_email(post_data['user_email']):
-            out_dic['code'] = '31'
-            return out_dic
+            if MUser.get_by_email(post_data['user_email']):
+                out_dic['code'] = '31'
+                return out_dic
 
         if extinfo is None:
             extinfo = {}
@@ -341,6 +344,7 @@ class MUser():
                 time_login=tools.timestamp(),
                 time_email=tools.timestamp(),
                 extinfo=extinfo,
+                user_avatar=post_data['user_avatar'],
             )
 
             out_dic['success'] = True
