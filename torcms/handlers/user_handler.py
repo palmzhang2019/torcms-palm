@@ -127,6 +127,7 @@ class UserHandler(BaseHandler):
 
         dict_get = {
             'before_regist': self.__before_regist__,
+            'avatar': self.__avatar__,
             'privacy': self.__privacy__,
             'regist': (lambda: self.redirect('/user/info'))
             if self.get_current_user() else self.__to_register__,
@@ -443,6 +444,9 @@ class UserHandler(BaseHandler):
                 'ad': False,
             }
             self.render('user/user_login.html', kwd=kwd, userinfo=None)
+
+    def __avatar__(self):
+        self.render('user/user_avatar.html', userinfo=None)
 
     def __before_regist__(self):
         '''
