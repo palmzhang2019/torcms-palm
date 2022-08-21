@@ -1,0 +1,43 @@
+{% extends "../theme/personal.html" %}
+{% block typebody %}
+<script type="text/javascript">
+    $().ready(function () {
+        // 判斷用戶的語言
+        let browserLang = navigator.language;
+
+    });
+    function verify( token ){
+        var jqxhr = $.post("/user/before_regist", { token: token }, function( data ) {
+            if (data == "true") {
+                window.open('/user/privacy','_self');
+            }
+        })
+    }
+</script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<div class="row regist">
+    <div class="recap">
+        <form action="?" method="POST">
+            <div 
+            class="g-recaptcha" 
+            data-sitekey="6LdqDJEhAAAAAJmC1njGmzwShiEoZZBsMONrHhgR"
+            data-callback="verify"
+            data-expired-callback="expired"
+            data-error-callback="error"
+            >
+        
+            </div>
+        </form>
+    </div>
+</div>
+<style>
+    div.recap {
+        width: 100%;
+    }
+    div.g-recaptcha div {
+        margin:0 auto;
+    }
+</style>
+
+{% end %}
+

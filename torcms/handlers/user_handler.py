@@ -9,6 +9,7 @@ import json
 import re
 import time
 
+import requests
 import tornado.web
 import wtforms.validators
 from wtforms.fields import StringField
@@ -125,6 +126,8 @@ class UserHandler(BaseHandler):
         url_arr = self.parse_url(url_str)
 
         dict_get = {
+            'before_regist': self.__before_regist__,
+            'privacy': self.__privacy__,
             'regist': (lambda: self.redirect('/user/info'))
             if self.get_current_user() else self.__to_register__,
             'login':
@@ -172,6 +175,8 @@ class UserHandler(BaseHandler):
 
         if url_str == 'regist':
             self.__register__()
+        elif url_str == 'before_regist':
+            self.__before_regist_post__()
         elif url_str == 'j_regist':
             self.json_register()
         elif url_str == 'j_changeinfo':
@@ -438,6 +443,40 @@ class UserHandler(BaseHandler):
                 'ad': False,
             }
             self.render('user/user_login.html', kwd=kwd, userinfo=None)
+
+    def __before_regist__(self):
+        '''
+        before regist.
+        '''
+        next_url = "/user/privacy"
+
+        if self.get_current_user():
+            self.redirect(next_url)
+        else:
+            kwd = {
+                'pager': '',
+                'next_url': next_url,
+                'ad': False,
+            }
+            self.render('user/user_or_roboot.html', kwd=kwd, userinfo=None)
+
+    def __privacy__(self):
+        self.render('user/user_privacy.html', userinfo=None)
+
+    def __before_regist_post__(self):
+        post_data = self.get_request_arguments()
+        data = {
+            'secret': '6LdqDJEhAAAAABAf9bCE5U_Poe_CR84ZYGIhT1N-',
+            'response': post_data['token']
+        }
+        response = requests.post('https://www.google.com/recaptcha/api/siteverify', data)
+        res_data = response.text
+        res = json.loads(res_data)['success']
+        if res:
+            self.set_cookie("rechap", post_data['token'])
+            self.write("true")
+        else:
+            self.write("false")
 
     def __register__(self):
         '''

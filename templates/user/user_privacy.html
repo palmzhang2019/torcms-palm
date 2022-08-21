@@ -1,0 +1,126 @@
+{% extends "../theme/personal.html" %}
+{% block typebody %}
+{% block head %}
+<!-- <link rel="stylesheet" href="/static/tass/css/markdown.css" type="text/css">
+<link rel="stylesheet" href="/static/tass/css/reset.css" type="text/css"> -->
+<style>
+    div.markdown {
+        width: 80%;
+        margin: 0 auto;
+        background-color: aliceblue;
+        border-radius: 6px;
+    }
+    div.markdown h3 {
+        margin-left: 2%;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+    div.markdown p {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+    div.markdown h2 {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    div.markdown {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+</style>
+{% end %}
+<script type="text/javascript">
+    $().ready(function () {
+        // 判斷用戶的語言
+        let browserLang = navigator.language;
+    });
+</script>
+<div class="row regist">
+    <div class="markdown">
+        <h2>隱私權保護政策</h2>
+        <p>
+            歡迎來到在日社畜網（以下簡稱此網站），為了讓您能夠安心的使用此網站的各項服務與資訊，特此向您說明此網站的隱私權保護政策，以保障您的權益，請您詳閱下列內容：
+        </p>
+
+        <h3>一、隱私權保護政策的適用範圍</h3>
+        
+        <p>隱私權保護政策內容，包括此網站如何處理在您使用網站服務時收集到的個人識別資料。隱私權保護政策不適用於此網站以外的相關連結網站，也不適用於非此網站所委託或參與管理的人員。</p>
+        
+        <h3>二、個人資料的蒐集、處理及利用方式</h3>
+        
+        <p>當您造訪此網站或使用此網站所提供之功能服務時，我們將視其為服務功能性質，除了在管制違反網站規章的用戶及其發布的任何形式的訊息(例如留言、推文、私信等)、此網站不會將個人資料用於其他用途。
+        此網站在您使用服務信箱、問卷調查等互動性功能時，會保留您所提供的帳號ID、暱稱、電子郵件地址及使用時間等。
+        於一般瀏覽時，伺服器會自行記錄相關行徑，包括您使用連線設備的IP位址、使用時間、使用的瀏覽器、瀏覽及點選資料記錄等，做為我們增進網站服務的參考依據，此記錄為內部應用，決不對外公佈。
+        為提供精確的服務，我們會將收集的問卷調查內容進行統計與分析，分析結果之統計數據或說明文字呈現，除供內部研究外，我們會視需要公佈統計數據及說明文字並根據結果對用戶的使用進行限制，但絕不涉及公開特定個人之資料。
+        </p>
+        <h3>三、資料之保護</h3>
+        <p>
+            此網站主機設於雲端系統、並使用相關的防火牆以及獨自的管理機制來保護網站及您的個人資料，只由經過授權的人員才能接觸您的個人資料，相關處理人員皆簽有保密合約，如有違反保密義務者，將會受到相關的法律處分。
+            如因業務需要有必要委託其他單位提供服務時，此網站亦會嚴格要求其遵守保密義務，並且採取必要檢查程序以確定其將確實遵守。
+            基於此網站"分享"的主旨，由用戶發布的文章不可避免的有可能會觸及到不特定人士在任何其他網站上所發布的文章或是圖片，基於著作權保護的前提，我們要求所有牽涉到"引用外部訊息"的訊息都盡可能的附上引用的來源或是來源網址，並由發布該訊息之用戶獨自承擔    
+        </p> 
+        <h3>四、網站對外的相關連結</h3>
+        <p>
+            此網站的網頁提供其他網站的網路連結，您也可經由此網站所提供的連結，點選進入其他網站。但該連結網站不適用此網站的隱私權保護政策，您必須參考該連結網站中的隱私權保護政策。
+        </p>
+        <h3>五、與第三人共用個人資料之政策</h3>
+        <p>
+            此網站絕不會提供、交換、出租或出售任何您的個人資料給其他個人、團體、私人企業或公務機關，但有法律依據或合約義務者，不在此限。
+        </p>
+        <p>
+            前項但書之情形包括不限於：
+        </p>
+        <p>
+            經由您書面同意。
+        </p>
+        <p>
+            法律明文規定。
+        </p>
+        <p>
+            為免除您生命、身體、自由或財產上之危險。
+        </p>
+        <p>
+            與公務機關或學術研究機構合作，基於公共利益為統計或學術研究而有必要，且資料經過提供者處理或蒐集者依其揭露方式無從識別特定之當事人。
+        </p>
+        <p>
+            當您在網站的行為，違反服務條款或可能損害或妨礙網站與其他使用者權益或導致任何人遭受損害時，經網站管理單位研析揭露您的個人資料是為了辨識、聯絡或採取法律行動所必要者。
+        </p>
+        <p>
+            有利於您的權益。
+        </p>
+        <p>
+            此網站委託廠商協助蒐集、處理或利用您的個人資料時，將對委外廠商或個人善盡監督管理之責。
+        </p>
+        
+        <h3>六、Cookie之使用</h3>
+        
+        <p>
+            為了提供您最佳的服務，此網站會在您的電腦中放置並取用我們的Cookie，若您不願接受Cookie的寫入，您可在您使用的瀏覽器功能項中設定隱私權等級為高，即可拒絕Cookie的寫入，但可能會導致網站某些功能無法正常執行 (例如色盲模式設定等)。
+        </p>        
+        <h3>七、隱私權保護政策之修正</h3>
+        <p>
+            此網站隱私權保護政策將因應需求隨時進行修正，修正後的條款將刊登於網站上。
+        </p>
+        <div style="text-align: center; margin-top: 2rem;">
+            <button type="button" class="btn btn-warning">拒绝</button>
+            <button type="button" class="btn btn-success" onclick="privcay_submit()">同意</button>
+        </div>
+        <script type="text/javascript">
+            function privcay_submit() {
+                window.open('/user/regist','_self');
+                // var cookie = document.cookie;
+                // cookieArr = cookie.split(';')
+                // var cookies = {};
+                // for (let i = 0; i < cookieArr.length; i++) {
+                //     let cookieKey = cookieArr[i].split("=")[0];
+                //     // let cookieValue = cookieArr[i].split("=")[1];
+                //     let cookieValue = unescape(cookieArr[i].split("=")[1]);//解码
+                //     cookies[cookieKey] = cookieValue;
+                // }
+                // console.log(cookies['rechap']);
+            }
+        </script>
+    </div>
+</div>
+{% end %}
+
