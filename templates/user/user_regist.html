@@ -43,46 +43,79 @@
                     }
                 }
         );
+    
+        $("div.modal-body img").click(function(){
+            $("div.modal-body img").removeClass("selected-img")
+            $(this).addClass('selected-img');
+        })
+
+        $("button#avatarSub").click(function(){
+            let selectedImg = $("div.modal-body img.selected-img");
+            $("img#img-avatar").attr("src", selectedImg.attr("src"));
+            $("#user_avatar").val(selectedImg.attr("src"));
+        })
     });
 </script>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Select Avatar
+                </h4>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    {% for item in avatars %}
+                    <li>
+                        <div class="text-center">
+                            <img src="/static/images/avatars/{{ item.avatar_path }}" alt="">
+                        </div>
+                    </li>
+                    {% end %}
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">close
+                </button>
+                <button type="button" id="avatarSub" class="btn btn-primary">
+                    submit
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
 
 <div class="row regist">
     <div class="panel panel-black">
     <div class="panel-heading"><b>{{ _('Regist') }} </b></div>
     <div class="panel-body">
-        <div class="row" id="hiddeniframe">
-            <button onclick="hiddeniframe()"> X </button>
-        </div>
-        <div class="row" id="avatar" style="display: none;">
-            <iframe src="/user/avatar" frameborder="0" width="100%" height="900px"></iframe>
-        </div>
         <form id="form_regist" action="/user/regist" method="post" class="form-horizontal" role="form">
             <fieldset>
                 <div class="form-group avatar-group">
-                    <label class="col-sm-2 control-label" for="user_name">{{ _('User avatar') }}： </label>
+                    <label class="col-sm-2 control-label avatar-dom" for="user_name">{{ _('User avatar') }}： </label>
                     <div class="col-sm-10">
                         <div class="row">
                             <div class="col-sm-2">
                                 <div class="avatar">
-                                    <img id="img-avatar" src='https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraightStrand&accessoriesType=Prescription01&hairColor=Platinum&facialHairType=MoustacheFancy&facialHairColor=Red&clotheType=CollarSweater&clotheColor=Blue01&eyeType=Happy&eyebrowType=SadConcerned&mouthType=ScreamOpen&skinColor=Light'
+                                    <img id="img-avatar" src='/static/images/avatars/default.png'
                                     />
                                 </div>
                             </div>
-                            <div class="col-sm-10 random">
-                                <button type="button" class="btn btn-info" onclick="showiframe()">{{ _('Generate') }}</button>
+                            <div class="col-sm-10 random avatar-dom">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                    select Avatar
+                                </button>
                             </div>
                         </div>    
                     </div>
-                </div>
-                <div class="form-group" style="display: none;">
-                    <label class="col-sm-2 control-label" for="user_avatar">{{ _('User avatar') }}： </label>
-
-                    <div class="col-sm-10">
-                        <input class="form-control" id='user_avatar' type="text" name="user_avatar">
-                    </div>
+                    <input class="form-control" style="display: none;" id='user_avatar' type="text" name="user_avatar">
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="user_name">{{ _('User name') }}： </label>
+                    <label class="col-sm-2 control-label" for="user_name">{{ _('User Account') }}： </label>
 
                     <div class="col-sm-10">
                         <input class="form-control" id='user_name' type="text" name="user_name"
@@ -105,12 +138,19 @@
                                placeholder="Please confirm and password input. ">
                     </div>
                 </div>
-                <div class="form-group" style="display: none;">
-                    <label class="col-sm-2 control-label" for="user_email">{{ _('Email') }} ：</label>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="nick_name">{{ _('Nick Name') }}：</label>
 
                     <div class="col-sm-10">
-                        <input class="form-control" id="user_email" type="email" name="user_email"
-                               placeholder="Please enter a correct E-mail.">
+                        <input class="form-control" id="nick_name" type="text" name="nick_name"
+                               placeholder="Please input yout nick name. ">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="user_pass2">{{ _('Introduction') }}：</label>
+
+                    <div class="col-sm-10">
+                        <textarea name="introduction" id="" cols="30" rows="10" class="form-control"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -125,37 +165,34 @@
     </div>
 </div>
 </div>
-<script type="text/javascript">
-    function showiframe(){
-        $('#avatar').css('display', 'block');
-        $('#hiddeniframe').css('display', 'block');
-    }
-    function hiddeniframe(){
-        $('#avatar').css('display', 'none');
-        $('#hiddeniframe').css('display', 'none');
-        var src = $('#img-avatar')[0].src;
-        $('#user_avatar').val(src)
-    }
-    function GetChildValue(src_text){
-        document.getElementById('img-avatar').src = src_text;
-    }
-</script>
 <style>
     div.avatar {
-        width: 40%;
+        width: 50%;
+    }
+    div.modal.fade div.row div {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
     }
 
-    div.avatar-group label {
-        margin-top: 20px;
-        margin-bottom: 20px;
+    div.modal.fade div.row div img {
+        width: 95%;
     }
-    div.random button {
-        margin-top: 20px;
-        margin-bottom: 20px; 
+    div.modal.fade li {
+        list-style:none;
+        display: inline-block;
+        width: 10%;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
     }
-    div#hiddeniframe {
-        text-align: center;
-        display: none;
+    div.form-group.avatar-group label, div {
+        vertical-align: middle;
+    }
+    .avatar-dom {
+        margin-top: 1.5rem;
+    }
+    img.selected-img {
+        border: 4px solid #05c6fe;
+        border-radius: 8px;
     }
 </style>
 {% end %}

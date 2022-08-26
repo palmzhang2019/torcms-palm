@@ -1,241 +1,39 @@
 <html>
-  <head>
-    <meta name="generator"
-    content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
-    <title></title>
-
-	<link href="/static/tass/css/main.83d879d8.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://use.fontawesome.com/6c3a90ea1a.css" media="all">
-	
-  </head>
-  <body style="width:96%; margin: 0 auto">
-	<div id="avatar-img"></div>
-    <form class="">
-      <div class="row form-group">
-        <label class="col-sm-3 form-label" for="topType">Top</label>
-        <div class="col-sm-9">
-          <select id="topType" class="form-control">
-            <option value="NoHair">NoHair</option>
-            <option value="Eyepatch">Eyepatch</option>
-            <option value="Hat">Hat</option>
-            <option value="Hijab">Hijab</option>
-            <option value="Turban">Turban</option>
-            <option value="WinterHat1">WinterHat1</option>
-            <option value="WinterHat2">WinterHat2</option>
-            <option value="WinterHat3">WinterHat3</option>
-            <option value="WinterHat4">WinterHat4</option>
-            <option value="LongHairBigHair">LongHairBigHair</option>
-            <option value="LongHairBob">LongHairBob</option>
-            <option value="LongHairBun">LongHairBun</option>
-            <option value="LongHairCurly">LongHairCurly</option>
-            <option value="LongHairCurvy">LongHairCurvy</option>
-            <option value="LongHairDreads">LongHairDreads</option>
-            <option value="LongHairFrida">LongHairFrida</option>
-            <option value="LongHairFro">LongHairFro</option>
-            <option value="LongHairFroBand">LongHairFroBand</option>
-            <option value="LongHairNotTooLong">LongHairNotTooLong</option>
-            <option value="LongHairShavedSides">LongHairShavedSides</option>
-            <option value="LongHairMiaWallace">LongHairMiaWallace</option>
-            <option value="LongHairStraight">LongHairStraight</option>
-            <option value="LongHairStraight2">LongHairStraight2</option>
-            <option value="LongHairStraightStrand">LongHairStraightStrand</option>
-            <option value="ShortHairDreads01">ShortHairDreads01</option>
-            <option value="ShortHairDreads02">ShortHairDreads02</option>
-            <option value="ShortHairFrizzle">ShortHairFrizzle</option>
-            <option value="ShortHairShaggyMullet">ShortHairShaggyMullet</option>
-            <option value="ShortHairShortCurly">ShortHairShortCurly</option>
-            <option value="ShortHairShortFlat">ShortHairShortFlat</option>
-            <option value="ShortHairShortRound">ShortHairShortRound</option>
-            <option value="ShortHairShortWaved">ShortHairShortWaved</option>
-            <option value="ShortHairSides">ShortHairSides</option>
-            <option value="ShortHairTheCaesar">ShortHairTheCaesar</option>
-            <option value="ShortHairTheCaesarSidePart">ShortHairTheCaesarSidePart</option>
-          </select>
-        </div>
-      </div>
-      <div class="row form-group">
-        <label class="col-sm-3 form-label" for="facialHairType">Facial Hair</label>
-        <div class="col-sm-9">
-          <select id="facialHairType" class="form-control">
-            <option value="Blank">Blank</option>
-            <option value="BeardMedium">BeardMedium</option>
-            <option value="BeardLight">BeardLight</option>
-            <option value="BeardMajestic">BeardMajestic</option>
-            <option value="MoustacheFancy">MoustacheFancy</option>
-            <option value="MoustacheMagnum">MoustacheMagnum</option>
-          </select>
-        </div>
-      </div>
-      <div class="row form-group">
-        <label class="col-sm-3 form-label" for="clotheType">👔 Clothes</label>
-        <div class="col-sm-9">
-          <select id="clotheType" class="form-control">
-            <option value="BlazerShirt">BlazerShirt</option>
-            <option value="BlazerSweater">BlazerSweater</option>
-            <option value="CollarSweater">CollarSweater</option>
-            <option value="GraphicShirt">GraphicShirt</option>
-            <option value="Hoodie">Hoodie</option>
-            <option value="Overall">Overall</option>
-            <option value="ShirtCrewNeck">ShirtCrewNeck</option>
-            <option value="ShirtScoopNeck">ShirtScoopNeck</option>
-            <option value="ShirtVNeck">ShirtVNeck</option>
-          </select>
-        </div>
-      </div>
-      <div class="row form-group">
-        <label class="col-sm-3 form-label" for="eyeType">👁 Eyes</label>
-        <div class="col-sm-9">
-          <select id="eyeType" class="form-control">
-            <option value="Close">Close</option>
-            <option value="Cry">Cry</option>
-            <option value="Default">Default</option>
-            <option value="Dizzy">Dizzy</option>
-            <option value="EyeRoll">EyeRoll</option>
-            <option value="Happy">Happy</option>
-            <option value="Hearts">Hearts</option>
-            <option value="Side">Side</option>
-            <option value="Squint">Squint</option>
-            <option value="Surprised">Surprised</option>
-            <option value="Wink">Wink</option>
-            <option value="WinkWacky">WinkWacky</option>
-          </select>
-        </div>
-      </div>
-      <div class="row form-group">
-        <label class="col-sm-3 form-label" for="eyebrowType">✏️ Eyebrow</label>
-        <div class="col-sm-9">
-          <select id="eyebrowType" class="form-control">
-            <option value="Angry">Angry</option>
-            <option value="AngryNatural">AngryNatural</option>
-            <option value="Default">Default</option>
-            <option value="DefaultNatural">DefaultNatural</option>
-            <option value="FlatNatural">FlatNatural</option>
-            <option value="RaisedExcited">RaisedExcited</option>
-            <option value="RaisedExcitedNatural">RaisedExcitedNatural</option>
-            <option value="SadConcerned">SadConcerned</option>
-            <option value="SadConcernedNatural">SadConcernedNatural</option>
-            <option value="UnibrowNatural">UnibrowNatural</option>
-            <option value="UpDown">UpDown</option>
-            <option value="UpDownNatural">UpDownNatural</option>
-          </select>
-        </div>
-      </div>
-      <div class="row form-group">
-        <label class="col-sm-3 form-label" for="mouthType">👄 Mouth</label>
-        <div class="col-sm-9">
-          <select id="mouthType" class="form-control">
-            <option value="Concerned">Concerned</option>
-            <option value="Default">Default</option>
-            <option value="Disbelief">Disbelief</option>
-            <option value="Eating">Eating</option>
-            <option value="Grimace">Grimace</option>
-            <option value="Sad">Sad</option>
-            <option value="ScreamOpen">ScreamOpen</option>
-            <option value="Serious">Serious</option>
-            <option value="Smile">Smile</option>
-            <option value="Tongue">Tongue</option>
-            <option value="Twinkle">Twinkle</option>
-            <option value="Vomit">Vomit</option>
-          </select>
-        </div>
-      </div>
-      <div class="row form-group">
-        <label class="col-sm-3 form-label" for="skinColor">🎨 Skin</label>
-        <div class="col-sm-9">
-          <select id="skinColor" class="form-control">
-            <option value="Tanned">Tanned</option>
-            <option value="Yellow">Yellow</option>
-            <option value="Pale">Pale</option>
-            <option value="Light">Light</option>
-            <option value="Brown">Brown</option>
-            <option value="DarkBrown">DarkBrown</option>
-            <option value="Black">Black</option>
-          </select>
-        </div>
-      </div>
-      <div class="row form-group" style="display: none;">
-        <div class="offset-sm-3 col-sm-9 offset-sm-3">More options coming soon, 
-        <a href="http://eepurl.com/c_7fN9" target="_blank">subscribe for updates</a></div>
-      </div>
-      <div class="row form-group" style="display: none;">
-        <div class="offset-sm-3 col-sm-9 offset-sm-3">
-            <button type="submit" class="btn btn-primary">PNG</button> 
-            <button type="submit" class="btn btn-secondary"> SVG</button> 
-            <button type="submit" class="btn btn-secondary"> Show React</button> 
-            <button type="submit" class="btn btn-secondary"> Show &lt;img&gt;</button>
-        </div>
-      </div>
-    </form>
-  </body>
-  <script type="text/javascript">
-	var img_obj = document.createElement('img');
-	var orgin_img = "https://avataaars.io/?avatarStyle=Circle";
-    var img_src = "";
-
-    var data = {
-        "topType": "LongHairStraight",
-        "accessoriesType": "Prescription01",
-        "hairColor": "BrownDark",
-        "facialHairType": "Blank",
-        "clotheType": "BlazerShirt",
-        "eyeType": "Close",
-        "eyebrowType": "Angry",
-        "mouthType": "Disbelief",
-        "skinColor": "Light"
-    };
-    var urlEncode = function(param, key, encode) {
-        if (param==null) return '';
-        var paramStr = '';
-        var t = typeof (param);
-        if (t == 'string' || t == 'number' || t == 'boolean') {
-            paramStr += '&' + key + '='  + ((encode==null||encode) ? encodeURIComponent(param) : param); 
-        } else {
-            for (var i in param) {
-                var k = key == null ? i : key + (param instanceof Array ? '[' + i + ']' : '.' + i)
-                paramStr += urlEncode(param[i], k, encode)
+    <head>
+        <link rel="stylesheet" href="/static/f2elib/bootstrap_3.3.7/css/bootstrap.min.css?v=4056508074c098e63356f88b53f8abdacae6bdd46e76e79028505be5d94ed6ec9cc6513ce2dbd1b398b23649a0e260f989b28669594df847daf3010fe296fe5d">
+        <style>
+            div.row div {
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
             }
-        }
-        return paramStr;
-    }
+        
+            div.row div img {
+                width: 95%;
+            }
+            li {
+                list-style:none;
+                display: inline-block;
+                width: 10%;
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="picNewsContent">
+                <ul>
+                    {% for item in avatars %}
+                    <li>
+                        <div class="text-center">
+                            <img src="/static/images/avatars/{{ item.avatar_path }}" alt="">
+                        </div>
+                    </li>
+                    {% end %}
+                </ul>
 
-    var urlparams = urlEncode(data);
-    img_src = orgin_img + urlparams;
-	img_obj.setAttribute('src', img_src);
-	var avatarObj = document.getElementById("avatar-img")
-	avatarObj.appendChild(img_obj);
-
-    function changeImg(data){
-        urlparams = urlEncode(data);
-        img_src = orgin_img + urlparams;
-        imgObj = document.getElementById("avatar-img").getElementsByTagName("img")[0];
-        imgObj.setAttribute('src', img_src);
-        parent.GetChildValue(img_src);
-    }
-
-    function addEventListenerByName(typeName) {
-        document.getElementById(typeName).addEventListener('change', function(e){
-            var index = e.target.selectedIndex;
-            changedOption = e.target[index];
-            optionValue = changedOption.value;
-            data[typeName] = optionValue;
-            changeImg(data);
-        })
-    }
-    addEventListenerByName('topType');
-    addEventListenerByName('facialHairType');
-    addEventListenerByName('clotheType');
-    addEventListenerByName('eyeType');
-    addEventListenerByName('eyebrowType');
-    addEventListenerByName('mouthType');
-    addEventListenerByName('skinColor');
-
-  </script>
-  <style>
-	div#avatar-img {
-		margin: 0 auto;
-		width: 18%;
-        margin-bottom: 2rem;
-	}
-  </style>
+            </div>
+        </div>
+    </body>
 </html>
+

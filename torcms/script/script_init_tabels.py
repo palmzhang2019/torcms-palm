@@ -12,7 +12,7 @@ from torcms.model.core_tab import (TabCollect, TabEntity, TabEntity2User,
                                    TabPost, TabPost2Tag, TabPostHist,
                                    TabRating, TabReferrer, TabRel, TabReply,
                                    TabReplyid, TabTag, TabUsage, TabUser2Reply,
-                                   TabWiki, TabWikiHist, TabCorrelation)
+                                   TabWiki, TabWikiHist, TabCorrelation, TabAvatar)
 
 
 def create_table(the_table):
@@ -52,6 +52,8 @@ def run_init_tables(*args):
     create_table(TabReplyid)
     create_table(TabReferrer)
     create_table(TabCorrelation)
+    create_table(TabCorrelation)
+    create_table(TabAvatar)
     print('Creating tables finished.')
     run_migrate()
 
@@ -93,6 +95,37 @@ def run_migrate(*args):
     try:
         migrate.migrate(
             torcms_migrator.add_column('tabmember', 'user_avatar', user_avatar)
+        )
+    except Exception as err:
+        print(repr(err))
+
+    ###########################################################################################
+
+    ###########################################################################################
+    nick_name = migrate.CharField(null=False,
+                                  unique=False,
+                                    max_length=50,
+                                    default='',
+                                    help_text='Nick Name')
+    try:
+        migrate.migrate(
+            torcms_migrator.add_column('tabmember', 'nick_name', nick_name)
+        )
+    except Exception as err:
+        print(repr(err))
+
+    ###########################################################################################
+
+    ###########################################################################################
+    introduction = migrate.CharField(
+        null=True,
+        max_length=200,
+        default='',
+        help_text='Introduction'
+    )
+    try:
+        migrate.migrate(
+            torcms_migrator.add_column('tabmember', 'introduction', introduction)
         )
     except Exception as err:
         print(repr(err))

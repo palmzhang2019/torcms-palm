@@ -23,7 +23,7 @@ from torcms.core.base_handler import BaseHandler
 from torcms.core.tool.send_email import send_mail
 from torcms.core.tools import logger
 from torcms.model.user_model import MUser
-
+from torcms.model.avatar_model import Avatar
 
 def check_regist_info(post_data):
     '''
@@ -487,10 +487,10 @@ class UserHandler(BaseHandler):
         regist the user.
         '''
         post_data = self.get_request_arguments()
-
+        print(post_data)
         form = SumForm(self.request.arguments)
         ckname = MUser.get_by_name(post_data['user_name'])
-        ckemail = MUser.get_by_email(post_data['user_email'])
+        # ckemail = MUser.get_by_email(post_data['user_email'])
         if ckname is None:
             pass
         else:
@@ -503,19 +503,19 @@ class UserHandler(BaseHandler):
                         cfg=config.CMS_CFG,
                         kwd=kwd,
                         userinfo=None)
-        if ckemail is None:
-            pass
-        else:
-            kwd = {
-                'info': '邮箱已经存在，请更换邮箱。',
-                'link': '/user/regist',
-            }
-            self.set_status(400)
-            self.render('misc/html/404.html',
-                        cfg=config.CMS_CFG,
-                        kwd=kwd,
-                        userinfo=None)
-        if form.validate() or ckemail is None:
+        # if ckemail is None:
+        #     pass
+        # else:
+        #     kwd = {
+        #         'info': '邮箱已经存在，请更换邮箱。',
+        #         'link': '/user/regist',
+        #     }
+        #     self.set_status(400)
+        #     self.render('misc/html/404.html',
+        #                 cfg=config.CMS_CFG,
+        #                 kwd=kwd,
+        #                 userinfo=None)
+        if form.validate():
             res_dic = MUser.create_user(post_data)
             if res_dic['success']:
                 self.redirect('/user/login')
@@ -619,9 +619,11 @@ class UserHandler(BaseHandler):
         kwd = {
             'pager': '',
         }
+        avatars = Avatar.query_all()
         self.render('user/user_regist.html',
                     cfg=config.CMS_CFG,
                     userinfo=None,
+                    avatars=avatars,
                     kwd=kwd)
 
     def login(self):

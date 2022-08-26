@@ -247,7 +247,7 @@ class TabMember(BaseModel):
                                  unique=True,
                                  max_length=255,
                                  help_text='User Name')
-    user_email = peewee.CharField(null=False,
+    user_email = peewee.CharField(null=True,
                                   unique=True,
                                   max_length=255,
                                   help_text='User Email')
@@ -267,6 +267,21 @@ class TabMember(BaseModel):
                                      help_text='Time auto send email.')
     failed_times = peewee.IntegerField(null=False, default=0, help_text='record the times for trying login.')
     time_failed = peewee.IntegerField(null=False, default=0, help_text='timestamp for login failed.')
+    extinfo = BinaryJSONField(null=False,
+                              default={},
+                              help_text='Extra data in JSON.')
+
+class TabAvatar(BaseModel):
+    avatar_id = peewee.CharField(null=False,
+                           index=True,
+                           unique=True,
+                           primary_key=True,
+                           max_length=36,
+                           help_text='')
+    avatar_path = peewee.CharField(null=False,
+                           unique=True,
+                           max_length=36,
+                           help_text='Avatar Path')
     extinfo = BinaryJSONField(null=False,
                               default={},
                               help_text='Extra data in JSON.')
