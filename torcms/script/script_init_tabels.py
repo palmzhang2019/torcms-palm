@@ -117,9 +117,108 @@ def run_migrate(*args):
     ###########################################################################################
 
     ###########################################################################################
+    user_sex = migrate.CharField(
+        null=True,
+        unique=False,
+        default='0',
+        help_text='Member Sex',
+        max_length='2')
+    try:
+        migrate.migrate(
+            torcms_migrator.add_column('tabmember', 'sex', user_sex)
+        )
+    except Exception as err:
+        print(repr(err))
+
+    ###########################################################################################
+
+    ###########################################################################################
+    user_age = migrate.IntegerField(
+        null=True,
+        unique=False,
+        default=0,
+        help_text='Member Age')
+    try:
+        migrate.migrate(
+            torcms_migrator.add_column('tabmember', 'age', user_age)
+        )
+    except Exception as err:
+        print(repr(err))
+
+    ###########################################################################################
+
+    ###########################################################################################
+    user_profession = migrate.CharField(
+        null=True,
+        unique=False,
+        default=None,
+        help_text='Member Profession',
+        max_length='32',
+    )
+    try:
+        migrate.migrate(
+            torcms_migrator.add_column('tabmember', 'profession', user_profession)
+        )
+    except Exception as err:
+        print(repr(err))
+
+    ###########################################################################################
+
+    ###########################################################################################
+    interest = migrate.CharField(
+        null=True,
+        unique=False,
+        default=None,
+        help_text='Member interest',
+        max_length='32',
+    )
+    try:
+        migrate.migrate(
+            torcms_migrator.add_column('tabmember', 'interest', interest)
+        )
+    except Exception as err:
+        print(repr(err))
+
+    ###########################################################################################
+
+    ###########################################################################################
+    birth_place = migrate.CharField(
+        null=True,
+        unique=False,
+        default=None,
+        help_text='Member Birth Place',
+        max_length='32',
+    )
+    try:
+        migrate.migrate(
+            torcms_migrator.add_column('tabmember', 'birth_place', birth_place)
+        )
+    except Exception as err:
+        print(repr(err))
+
+    ###########################################################################################
+
+    ###########################################################################################
+    location = migrate.CharField(
+        null=True,
+        unique=False,
+        default=None,
+        help_text='Member Location',
+        max_length='32',
+    )
+    try:
+        migrate.migrate(
+            torcms_migrator.add_column('tabmember', 'location', location)
+        )
+    except Exception as err:
+        print(repr(err))
+
+    ###########################################################################################
+
+    ###########################################################################################
     introduction = migrate.CharField(
         null=True,
-        max_length=200,
+        max_length=50,
         default='',
         help_text='Introduction'
     )

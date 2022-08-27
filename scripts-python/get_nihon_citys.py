@@ -12,4 +12,3 @@ for top_city in citys_data['topCityList']:
     }
     top_citys.append(item)
 
-print(top_citys)

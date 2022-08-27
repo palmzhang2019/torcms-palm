@@ -95,6 +95,18 @@ class SumForm(Form):
         default='')
 
 
+class SumFormWithoutEmail(Form):
+    '''
+    WTForm for user.
+    '''
+    user_name = StringField('user_name',
+                            validators=[DataRequired()],
+                            default='')
+    user_pass = StringField('user_pass',
+                            validators=[DataRequired()],
+                            default='')
+
+
 class SumFormInfo(Form):
     '''
     WTForm for user.
@@ -156,7 +168,6 @@ class UserHandler(BaseHandler):
             'list':
                 self.__user_list__,
         }
-
         if len(url_arr) == 1:
             dict_get.get(url_arr[0])()
         elif len(url_arr) == 2:
@@ -488,9 +499,13 @@ class UserHandler(BaseHandler):
         '''
         post_data = self.get_request_arguments()
         print(post_data)
-        form = SumForm(self.request.arguments)
         ckname = MUser.get_by_name(post_data['user_name'])
-        # ckemail = MUser.get_by_email(post_data['user_email'])
+        ckemail = None
+        if post_data['user_email']:
+            ckemail = MUser.get_by_email(post_data['user_email'])
+            form = SumForm(self.request.arguments)
+        else:
+            form = SumFormWithoutEmail(self.request.arguments)
         if ckname is None:
             pass
         else:
@@ -503,18 +518,18 @@ class UserHandler(BaseHandler):
                         cfg=config.CMS_CFG,
                         kwd=kwd,
                         userinfo=None)
-        # if ckemail is None:
-        #     pass
-        # else:
-        #     kwd = {
-        #         'info': '邮箱已经存在，请更换邮箱。',
-        #         'link': '/user/regist',
-        #     }
-        #     self.set_status(400)
-        #     self.render('misc/html/404.html',
-        #                 cfg=config.CMS_CFG,
-        #                 kwd=kwd,
-        #                 userinfo=None)
+        if ckemail is None:
+            pass
+        else:
+            kwd = {
+                'info': '邮箱已经存在，请更换邮箱。',
+                'link': '/user/regist',
+            }
+            self.set_status(400)
+            self.render('misc/html/404.html',
+                        cfg=config.CMS_CFG,
+                        kwd=kwd,
+                        userinfo=None)
         if form.validate():
             res_dic = MUser.create_user(post_data)
             if res_dic['success']:

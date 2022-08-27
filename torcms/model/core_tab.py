@@ -242,13 +242,24 @@ class TabMember(BaseModel):
                            unique=False,
                            max_length=255,
                            help_text='User Avatar')
+    nick_name = peewee.CharField(null=False,
+                           unique=False,
+                           max_length=50,
+                           default='',
+                           help_text='Nick Name')
+    introduction = peewee.CharField(
+        null=True,
+        max_length=50,
+        default='',
+        help_text='introduction'
+    )
     user_name = peewee.CharField(null=False,
                                  index=True,
                                  unique=True,
                                  max_length=255,
                                  help_text='User Name')
     user_email = peewee.CharField(null=True,
-                                  unique=True,
+                                  unique=False,
                                   max_length=255,
                                   help_text='User Email')
     user_pass = peewee.CharField(null=False,
@@ -258,6 +269,47 @@ class TabMember(BaseModel):
                             default='1000',
                             help_text='Member Privilege',
                             max_length='4')
+    user_sex = peewee.CharField(
+        null=True,
+        unique=False,
+        default='0',
+        help_text='Member Sex',
+        max_length='2'
+    )
+    user_age = peewee.IntegerField(
+        null=True,
+        unique=False,
+        default=0,
+        help_text='Member Age',
+    )
+    user_profession = peewee.CharField(
+        null=True,
+        unique=False,
+        default=None,
+        help_text='Member profession',
+        max_length='32',
+    )
+    interest = peewee.CharField(
+        null=True,
+        unique=False,
+        default=None,
+        help_text='Member interest',
+        max_length='32',
+    )
+    birth_place = peewee.CharField(
+        null=True,
+        unique=False,
+        default=None,
+        help_text='Member Birth Place',
+        max_length='32',
+    )
+    location = peewee.CharField(
+        null=True,
+        unique=False,
+        default=None,
+        help_text='Member Location',
+        max_length='32',
+    )
     time_reset_passwd = peewee.IntegerField(null=False, default=0)
     time_login = peewee.IntegerField(null=False, default=0)
     time_create = peewee.IntegerField(null=False, default=0)

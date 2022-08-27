@@ -40,7 +40,6 @@ class MUser():
         try:
             return TabMember.get(user_name=uname)
         except Exception as err:
-            print(repr(err))
             return None
 
     @staticmethod
@@ -306,7 +305,6 @@ class MUser():
         91: unkown reason.
         '''
         out_dic = {'success': False, 'code': '00'}
-
         if post_data['user_name'].startswith('_'):
             '''
             the user_name startwith with ``_``, ONLY used for inner, not for login.
@@ -316,20 +314,20 @@ class MUser():
 
             out_dic['code'] = '11'
             return out_dic
-
-        if post_data['user_email'] == "":
-            post_data['user_email'] = ""
-        else:
+        if post_data['user_email'] != "":
             if not tools.check_email_valid(post_data['user_email']):
                 out_dic['code'] = '21'
                 return out_dic
-
             if MUser.get_by_email(post_data['user_email']):
                 out_dic['code'] = '31'
                 return out_dic
-
+        else:
+            post_data['user_email'] = None
         if extinfo is None:
             extinfo = {}
+
+        if post_data['user_age'] or post_data['user_age'] == '':
+            post_data['user_age']=0
 
         try:
             TabMember.create(
@@ -345,8 +343,15 @@ class MUser():
                 time_email=tools.timestamp(),
                 extinfo=extinfo,
                 user_avatar=post_data['user_avatar'],
+                nick_name=post_data['nick_name'],
+                introduction=post_data['introduction'],
+                user_sex=post_data['user_sex'],
+                user_age=post_data['user_age'],
+                user_profession=post_data['user_profession'],
+                interest=post_data['interest'],
+                birth_place=post_data['birth_place'],
+                location=post_data['location'],
             )
-
             out_dic['success'] = True
         except Exception as err:
             print(repr(err))

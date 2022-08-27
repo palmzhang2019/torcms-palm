@@ -1,5 +1,7 @@
-{% extends "../theme/personal.html" %}
-{% block typebody %}
+{% extends "../theme/bage.html" %}
+{% block head %}
+<!-- <link href="/static/tass/css/multiple-select.css" rel="stylesheet"> -->
+<!-- <script type="text/javascript" src="/static/js/multiple-select.js"></script> -->
 <script type="text/javascript">
     $().ready(function () {
         $("#form_regist").validate(
@@ -18,7 +20,7 @@
                             equalTo: "#user_pass"
                         },
                         user_email: {
-                            required: true,
+                            required: false,
                             email: true
                         }
                     },
@@ -43,7 +45,7 @@
                     }
                 }
         );
-    
+
         $("div.modal-body img").click(function(){
             $("div.modal-body img").removeClass("selected-img")
             $(this).addClass('selected-img');
@@ -52,10 +54,77 @@
         $("button#avatarSub").click(function(){
             let selectedImg = $("div.modal-body img.selected-img");
             $("img#img-avatar").attr("src", selectedImg.attr("src"));
-            $("#user_avatar").val(selectedImg.attr("src"));
+            var path = selectedImg.attr("src").split("/")[selectedImg.attr("src").split("/").length-1];
+            $("#user_avatar").val(path);
+            $(this).prev().click();
+        })
+        $("button#next").click(function(){
+            $("div#page1").css("display", "none");
+            $("div#page2").css("display", "");
+        })
+        $("button#previous-page").click(function(){
+            $("div#page1").css("display", "");
+            $("div#page2").css("display", "none");
+        })
+        $("div.interest-check input").click(function(){
+            obj = document.getElementsByName("interests");
+            check_val = [];
+            for (k in obj) {
+                //判断复选框是否被选中
+                if (obj[k].checked)
+                    //获取被选中的复选框的值
+                    check_val.push(obj[k].value);
+            }
+            $("input#interest").val(check_val.toString())
         })
     });
 </script>
+<style>
+    img#img-avatar {
+        width: 35%;
+    }
+    div.modal.fade div.row div {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    div.modal.fade div.row div img {
+        width: 95%;
+    }
+    div.modal.fade li {
+        list-style:none;
+        display: inline-block;
+        width: 10%;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    div.form-group.avatar-group label, div {
+        vertical-align: middle;
+    }
+    .avatar-dom {
+        margin-top: 1.5rem;
+    }
+    img.selected-img {
+        border: 4px solid #05c6fe;
+        border-radius: 8px;
+    }
+    .form-group .row {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+    .form-group .row button.btn-primary {
+        background-color: #337ab7;
+    }
+    div.submit-div {
+        width: 100%;
+        text-align: center;
+    }
+    .mt-0 .list-group-item-primary {
+        background-color: #3498db;
+    }
+</style>
+{% end %}
+{% block typebody %}
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -91,73 +160,210 @@
 
 <div class="row regist">
     <div class="panel panel-black">
-    <div class="panel-heading"><b>{{ _('Regist') }} </b></div>
+    <div class="panel-heading"><b>{{ _('User Identity Setting') }} </b></div>
     <div class="panel-body">
         <form id="form_regist" action="/user/regist" method="post" class="form-horizontal" role="form">
             <fieldset>
-                <div class="form-group avatar-group">
-                    <label class="col-sm-2 control-label avatar-dom" for="user_name">{{ _('User avatar') }}： </label>
-                    <div class="col-sm-10">
+                <div id="page1">
+                    <div class="form-group avatar-group">
                         <div class="row">
-                            <div class="col-sm-2">
-                                <div class="avatar">
-                                    <img id="img-avatar" src='/static/images/avatars/default.png'
-                                    />
-                                </div>
+                            <label class="control-label avatar-dom" for="user_name">{{ _('User avatar') }}： </label>
+                        </div>
+                        <div class="row">
+                            <div class="avatar col-sm-4">
+                                <img id="img-avatar" src='/static/images/avatars/default.png'
+                                />
                             </div>
-                            <div class="col-sm-10 random avatar-dom">
+                            <div class="random avatar-dom col-sm-8">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                                     select Avatar
                                 </button>
                             </div>
-                        </div>    
+                        </div>
+                        <input class="form-control" style="display: none;" id='user_avatar' type="text" name="user_avatar">
                     </div>
-                    <input class="form-control" style="display: none;" id='user_avatar' type="text" name="user_avatar">
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="user_name">{{ _('User Account') }}： </label>
+                    <div class="form-group">
+                        <div class="row">
+                            <label class="control-label" for="user_name">{{ _('User Account') }}： </label>
+                        </div>
+                        <div class="row">
+                            <input class="form-control" id='user_name' type="text" name="user_name"
+                                   placeholder="User name must be alphabetic or alphanumeric combination (letter).">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <label class="col-sm-2 control-label" for="user_pass">{{ _('Password') }}：</label>
+                        </div>
+                        <div class="row">
+                            <input class="form-control" id="user_pass" type="password" name="user_pass"
+                                   placeholder="Password at least 6, the longest 20. ">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                        <label class="control-label" for="user_pass2">{{ _('Confirm password') }}：</label>
+                        </div>
+                        <div class="row">
+                            <input class="form-control" id="user_pass2" type="password" name="user_pass2"
+                                   placeholder="Please confirm and password input. ">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                        <label class="control-label" for="nick_name">{{ _('Nick Name') }}：</label>
+                        </div>
+                        <div class="row">
+                            <input class="form-control" id="nick_name" type="text" name="nick_name"
+                                   placeholder="Please input yout nick name. ">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                        <label class="control-label" for="introduction">{{ _('Introduction') }}：</label>
+                        </div>
 
-                    <div class="col-sm-10">
-                        <input class="form-control" id='user_name' type="text" name="user_name"
-                               placeholder="User name must be alphabetic or alphanumeric combination (letter).">
+                        <div class="row">
+                            <input class="form-control" id="introduction" type="text" name="introduction"
+                                   placeholder="Please input yout introduction. ">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="submit-div">
+                                    <button id="sub-cancel" type="button" class="btn btn-warning">{{ _('Cancel') }}</button>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="submit-div">
+                                    <button id="next" type="button" class="btn btn-primary">{{ _('Next') }}</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="user_pass">{{ _('Password') }}：</label>
-
-                    <div class="col-sm-10">
-                        <input class="form-control" id="user_pass" type="password" name="user_pass"
-                               placeholder="Password at least 6, the longest 20. ">
+                <div id="page2" style="display: none;">
+                    <div class="form-group">
+                        <div class="row">
+                            <label class="control-label" for="user_sex">{{ _('User email') }}： </label>
+                        </div>
+                        <div class="row">
+                            <input
+                                    class="form-control"
+                                    id="user_email"
+                                    type="email"
+                                    name="user_email"
+                                    placeholder="Please enter a correct E-mail." />
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="user_pass2">{{ _('Confirm password') }}：</label>
-
-                    <div class="col-sm-10">
-                        <input class="form-control" id="user_pass2" type="password" name="user_pass2"
-                               placeholder="Please confirm and password input. ">
+                    <div class="form-group">
+                        <div class="row">
+                            <label class="control-label" for="user_sex">{{ _('User Sex') }}： </label>
+                        </div>
+                        <div class="row">
+                            <select class="form-control" id='user_sex' name="user_sex">
+                                <option value="0">---</option>
+                                <option value="1">Man</option>
+                                <option value="2">Female</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="nick_name">{{ _('Nick Name') }}：</label>
-
-                    <div class="col-sm-10">
-                        <input class="form-control" id="nick_name" type="text" name="nick_name"
-                               placeholder="Please input yout nick name. ">
+                    <div class="form-group">
+                        <div class="row">
+                            <label class="control-label" for="user_age">{{ _('Age') }}：</label>
+                        </div>
+                        <div class="row">
+                            <input class="form-control" id="user_age" type="text" name="user_age"
+                                   placeholder="Just allowed number">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="user_pass2">{{ _('Introduction') }}：</label>
-
-                    <div class="col-sm-10">
-                        <textarea name="introduction" id="" cols="30" rows="10" class="form-control"></textarea>
+                    <div class="form-group">
+                        <div class="row">
+                        <label class="control-label" for="user_profession">{{ _('User Profession') }}：</label>
+                        </div>
+                        <div class="row">
+                            <select class="form-control" id='user_profession' name="user_profession">
+                                <option value="0">-------</option>
+                                <option value="1">Student</option>
+                                <option value="2">office worker</option>
+                                <option value="3">Freelancer</option>
+                                <option value="4">Housewife</option>
+                                <option value="5">President</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label" for="sub1"></label>
-
-                    <div class="col-sm-10">
-                        <button id="sub1" type="submit" class="btn btn-primary">{{ _('Submit') }}</button>
+                    <div class="form-group">
+                        <div class="row">
+                        <label class="control-label">{{ _('Intersts') }}：</label>
+                        </div>
+                        <div class="row">
+                            <div class="form-check interest-check">
+                              <input class="form-check-input" name="interests" type="checkbox" value="1" id="japanese">
+                              <label class="form-check-label" for="japanese">
+                                日语
+                              </label>
+                              <input class="form-check-input" name="interests" type="checkbox" value="2" id="friends">
+                              <label class="form-check-label" for="friends">
+                                交友
+                              </label>
+                              <input class="form-check-input" name="interests" type="checkbox" value="3" id="liuxue">
+                              <label class="form-check-label" for="liuxue">
+                                留学
+                              </label>
+                              <input class="form-check-input" name="interests" type="checkbox" value="4" id="sports">
+                              <label class="form-check-label" for="sports">
+                                运动
+                              </label>
+                              <input class="form-check-input" name="interests" type="checkbox" value="5" id="foods">
+                              <label class="form-check-label" for="foods">
+                                美食
+                              </label>
+                            </div>
+                            <input style="display: none;" class="form-control" id="interest" type="text" name="interest">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                        <label class="control-label" for="birth_place">{{ _('Birth place') }}：</label>
+                        </div>
+                        <div class="row">
+                            <input class="form-control" id="birth_place" type="text" name="birth_place"
+                                   placeholder="birth place">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                        <label class="control-label" for="location">{{ _('Location Now') }}：</label>
+                        </div>
+                        <div class="row">
+                            <input class="form-control" id="location" type="text" name="location"
+                                   placeholder="location">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                        <label class="control-label" for="profile_text">{{ _('Personal Profile・Comments') }}：</label>
+                        </div>
+                        <div class="row">
+                            <textarea name="profile_text" id="profile_text" cols="50" rows="10" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" style="display: none" for="sub1"></label>
+                        <div class="row">
+                            
+                            <div class="col-sm-6">
+                                <div class="submit-div">
+                                    <button id="previous-page" type="button" class="btn btn-warning">{{ _('Previous') }}</button>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="submit-div">
+                                    <button id="sub1" type="submit" class="btn btn-primary">{{ _('Submit') }}</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </fieldset>
@@ -165,35 +371,7 @@
     </div>
 </div>
 </div>
-<style>
-    div.avatar {
-        width: 50%;
-    }
-    div.modal.fade div.row div {
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
-    }
+<!-- <script type="text/javascript" src="/static/js/app.js"></script> -->
 
-    div.modal.fade div.row div img {
-        width: 95%;
-    }
-    div.modal.fade li {
-        list-style:none;
-        display: inline-block;
-        width: 10%;
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
-    }
-    div.form-group.avatar-group label, div {
-        vertical-align: middle;
-    }
-    .avatar-dom {
-        margin-top: 1.5rem;
-    }
-    img.selected-img {
-        border: 4px solid #05c6fe;
-        border-radius: 8px;
-    }
-</style>
 {% end %}
 
