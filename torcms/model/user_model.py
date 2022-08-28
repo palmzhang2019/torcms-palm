@@ -326,8 +326,9 @@ class MUser():
         if extinfo is None:
             extinfo = {}
 
-        if post_data['user_age'] or post_data['user_age'] == '':
-            post_data['user_age']=0
+        if 'user_age' in post_data.keys():
+            if post_data['user_age'] or post_data['user_age'] == '':
+                post_data['user_age']=0
 
         try:
             TabMember.create(

@@ -535,14 +535,7 @@
                         <span id="reconfirm_profile_text"></span>
                     </div>
                     <div class="row">
-                        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-                        <script type="text/javascript">
-                            function verify( token ){
-                                var jqxhr = $.post("/user/before_regist", { token: token }, function( data ) {
-                                    $("input#rechapcha").val(token)
-                                })
-                            }
-                        </script>
+                        <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
                         <div class="recap">
                             <form action="?" method="POST">
                                 <div 

@@ -518,41 +518,53 @@ class UserHandler(BaseHandler):
                 kwd=kwd,
                 userinfo=None
             )
-        ckname = MUser.get_by_name(post_data['user_name'])
-        ckemail = None
-        if post_data['user_email']:
-            ckemail = MUser.get_by_email(post_data['user_email'])
-            form = SumForm(self.request.arguments)
         else:
-            form = SumFormWithoutEmail(self.request.arguments)
-        if ckname is None:
-            pass
-        else:
-            kwd = {
-                'info': '用户名已存在，请更换用户名。',
-                'link': '/user/regist',
-            }
-            self.set_status(400)
-            self.render('misc/html/404.html',
-                        cfg=config.CMS_CFG,
-                        kwd=kwd,
-                        userinfo=None)
-        if ckemail is None:
-            pass
-        else:
-            kwd = {
-                'info': '邮箱已经存在，请更换邮箱。',
-                'link': '/user/regist',
-            }
-            self.set_status(400)
-            self.render('misc/html/404.html',
-                        cfg=config.CMS_CFG,
-                        kwd=kwd,
-                        userinfo=None)
-        if form.validate():
-            res_dic = MUser.create_user(post_data)
-            if res_dic['success']:
-                self.redirect('/user/regist_finish')
+            ckname = MUser.get_by_name(post_data['user_name'])
+            ckemail = None
+            if post_data['user_email']:
+                ckemail = MUser.get_by_email(post_data['user_email'])
+                form = SumForm(self.request.arguments)
+            else:
+                form = SumFormWithoutEmail(self.request.arguments)
+            if ckname is None:
+                pass
+            else:
+                kwd = {
+                    'info': '用户名已存在，请更换用户名。',
+                    'link': '/user/regist',
+                }
+                self.set_status(400)
+                self.render('misc/html/404.html',
+                            cfg=config.CMS_CFG,
+                            kwd=kwd,
+                            userinfo=None)
+            if ckemail is None:
+                pass
+            else:
+                kwd = {
+                    'info': '邮箱已经存在，请更换邮箱。',
+                    'link': '/user/regist',
+                }
+                self.set_status(400)
+                self.render('misc/html/404.html',
+                            cfg=config.CMS_CFG,
+                            kwd=kwd,
+                            userinfo=None)
+            if form.validate():
+                res_dic = MUser.create_user(post_data)
+                if res_dic['success']:
+                    self.redirect('/user/regist_finish')
+                else:
+                    kwd = {
+                        'info': '注册不成功',
+                        'link': '/user/regist',
+                    }
+                    self.set_status(400)
+                    self.render('misc/html/404.html',
+                                cfg=config.CMS_CFG,
+                                kwd=kwd,
+                                userinfo=None)
+
             else:
                 kwd = {
                     'info': '注册不成功',
@@ -563,17 +575,6 @@ class UserHandler(BaseHandler):
                             cfg=config.CMS_CFG,
                             kwd=kwd,
                             userinfo=None)
-
-        else:
-            kwd = {
-                'info': '注册不成功',
-                'link': '/user/regist',
-            }
-            self.set_status(400)
-            self.render('misc/html/404.html',
-                        cfg=config.CMS_CFG,
-                        kwd=kwd,
-                        userinfo=None)
 
     def json_register(self):
         '''
