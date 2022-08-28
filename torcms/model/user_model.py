@@ -6,7 +6,7 @@ import time
 
 from config import CMS_CFG
 from torcms.core import tools
-from torcms.model.core_tab import TabMember
+from torcms.model.core_tab import TabMember, TabUserProfile
 
 
 class MUser():
@@ -351,6 +351,10 @@ class MUser():
                 interest=post_data['interest'],
                 birth_place=post_data['birth_place'],
                 location=post_data['location'],
+            )
+            TabUserProfile.create(
+                uid=tools.get_uuid(),
+                profile_text=post_data['profile_text']
             )
             out_dic['success'] = True
         except Exception as err:

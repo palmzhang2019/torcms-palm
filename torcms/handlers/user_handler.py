@@ -143,6 +143,7 @@ class UserHandler(BaseHandler):
             'privacy': self.__privacy__,
             'regist': (lambda: self.redirect('/user/info'))
             if self.get_current_user() else self.__to_register__,
+            'regist_finish': self.__regist_finish__,
             'login':
                 self.__to_login__,
             'info':
@@ -498,7 +499,25 @@ class UserHandler(BaseHandler):
         regist the user.
         '''
         post_data = self.get_request_arguments()
-        print(post_data)
+        google_data = {
+            'secret': '6LdqDJEhAAAAABAf9bCE5U_Poe_CR84ZYGIhT1N-',
+            'response': post_data['g-recaptcha-response']
+        }
+        response = requests.post('https://www.google.com/recaptcha/api/siteverify', google_data)
+        res_data = response.text
+        res = json.loads(res_data)['success']
+        if not res:
+            kwd = {
+                'info': '没有通过Google验证',
+                'link': '/user/regist',
+            }
+            self.set_status(400)
+            self.render(
+                'misc/html/404.html',
+                cfg=config.CMS_CFG,
+                kwd=kwd,
+                userinfo=None
+            )
         ckname = MUser.get_by_name(post_data['user_name'])
         ckemail = None
         if post_data['user_email']:
@@ -533,7 +552,7 @@ class UserHandler(BaseHandler):
         if form.validate():
             res_dic = MUser.create_user(post_data)
             if res_dic['success']:
-                self.redirect('/user/login')
+                self.redirect('/user/regist_finish')
             else:
                 kwd = {
                     'info': '注册不成功',
@@ -640,6 +659,13 @@ class UserHandler(BaseHandler):
                     userinfo=None,
                     avatars=avatars,
                     kwd=kwd)
+
+    def __regist_finish__(self):
+        self.render(
+            'user/regist_finish.html',
+            cfg=config.CMS_CFG,
+            userinfo=None,
+        )
 
     def login(self):
         '''

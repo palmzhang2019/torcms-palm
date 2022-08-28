@@ -1,0 +1,58 @@
+{% extends "../theme/bage.html" %}
+{% block head %}
+<script type="text/javascript">
+    
+    setInterval(TimeRow, 1000)
+
+    function TimeRow() {
+        text=$("b#time1").text();
+        if (text == '0') {
+            $(location).attr("href","/")
+        } else {
+            text = text - 1;
+            $("b#time1").text(text);
+        }
+    }
+</script>
+{% end %}
+{% block typebody %}
+<style>
+    div.row.title {
+        padding-bottom: 6rem;
+    }
+    div.row.content {
+        text-align: center;
+    }
+    span.number {
+        font-weight: 700;
+        font-size: 32px;
+        color: red;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+</style>
+<div class="row">
+    <div class="panel panel-black">
+        <div class="panel-heading" id="settings-div"><b>{{ _('用戶創建完成 ') }} </b></div>
+    </div>
+    <div class="panel-body">
+        <div class="row title">
+            <h2>用戶創建完成</h2>
+        </div>
+        <div class="row content">
+            <p>
+                您的帳號將在  <span class="number">4</span>  小時後正式激活
+            </p>
+            <p>
+                激活前可以使用留言以及對文章的評價功能，激活後則可以開始使用發布文章、以及信箱功能。管理人員祝您在本網站可以擁有良好的使用體驗。
+            </p>
+            <p>
+                將在<span class="number"><b id="time1" style="font-size: 14px; font-weight: 300">10</b></span>秒後返回網站首頁...
+            </p>
+        </div>
+    </div>
+</div>
+
+{% end %}
+

@@ -12,7 +12,7 @@ from torcms.model.core_tab import (TabCollect, TabEntity, TabEntity2User,
                                    TabPost, TabPost2Tag, TabPostHist,
                                    TabRating, TabReferrer, TabRel, TabReply,
                                    TabReplyid, TabTag, TabUsage, TabUser2Reply,
-                                   TabWiki, TabWikiHist, TabCorrelation, TabAvatar)
+                                   TabWiki, TabWikiHist, TabCorrelation, TabAvatar, TabUserProfile)
 
 
 def create_table(the_table):
@@ -54,6 +54,7 @@ def run_init_tables(*args):
     create_table(TabCorrelation)
     create_table(TabCorrelation)
     create_table(TabAvatar)
+    create_table(TabUserProfile)
     print('Creating tables finished.')
     run_migrate()
 

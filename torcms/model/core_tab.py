@@ -323,6 +323,22 @@ class TabMember(BaseModel):
                               default={},
                               help_text='Extra data in JSON.')
 
+
+class TabUserProfile(BaseModel):
+    uid = peewee.CharField(
+        null=False,
+        index=True,
+        unique=True,
+        primary_key=True,
+        max_length=36,
+        help_text=''
+    )
+    profile_text = peewee.TextField(
+        null=True,
+        help_text='',
+    )
+
+
 class TabAvatar(BaseModel):
     avatar_id = peewee.CharField(null=False,
                            index=True,

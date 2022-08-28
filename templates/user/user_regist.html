@@ -1,7 +1,5 @@
 {% extends "../theme/bage.html" %}
 {% block head %}
-<!-- <link href="/static/tass/css/multiple-select.css" rel="stylesheet"> -->
-<!-- <script type="text/javascript" src="/static/js/multiple-select.js"></script> -->
 <script type="text/javascript">
     $().ready(function () {
         $("#form_regist").validate(
@@ -13,14 +11,21 @@
                         },
                         user_pass: {
                             required: true,
-                            rangelength: [6, 20]
+                            rangelength: [8, 20]
                         },
                         user_pass2: {
                             required: true,
                             equalTo: "#user_pass"
                         },
+                        nick_name: {
+                            required: true,
+                            rangelength: [2, 24]
+                        },
+                        introduction: {
+                            required: true,
+                            rangelength: [2, 50]
+                        },
                         user_email: {
-                            required: false,
                             email: true
                         }
                     },
@@ -39,8 +44,15 @@
                             equalTo: "<span class='red'>Enter the password twice</span>"
                         },
                         user_email: {
-                            required: "<span class='red'>Please enter a correct E-mail </span>",
                             email: "<span class='red'>Please enter a correct E-mail</span>"
+                        },
+                        nick_name: {
+                            required: "<span class='red'>Please enter your nick name</span>",
+                            rangelength: "<span class='red'>Nick Name for at least 2, up to 50</span>"  
+                        },
+                        introduction: {
+                            required: "<span class='red'>Please enter your introduction</span>",
+                            rangelength: "<span class='red'>Introduction for at least 2, up to 50</span>"   
                         }
                     }
                 }
@@ -59,12 +71,97 @@
             $(this).prev().click();
         })
         $("button#next").click(function(){
-            $("div#page1").css("display", "none");
-            $("div#page2").css("display", "");
+            var inputs = $("div#page1 input.form-control");
+            var page1f = true
+            for (let i =0; i<inputs.length ; i++) {
+                let vaa = $(inputs[i]).val();
+                if (!vaa) {
+                    page1f = false
+                }
+            }
+            if (page1f) {
+                $("div#page1").css("display", "none");
+                $("div#page2").css("display", "");
+                $("div#page3").css("display", "none");
+                $("div#recomfirm-div").css("display", "none")
+                $("div#settings-div").css("display", "")
+            }
         })
-        $("button#previous-page").click(function(){
+        $("button#previous-page").click(function() {
             $("div#page1").css("display", "");
             $("div#page2").css("display", "none");
+            $("div#page3").css("display", "none");
+            $("div#recomfirm-div").css("display", "none")
+            $("div#settings-div").css("display", "")
+        })
+        $("button#reconfirmation").click(function() {
+            $("div#page1").css("display", "none");
+            $("div#page2").css("display", "none");
+            $("div#page3").css("display", "");
+            $("div#recomfirm-div").css("display", "");
+            $("div#settings-div").css("display", "none");
+            let arrayData = $('form#form_regist').serializeArray();
+            for (itemIndex in arrayData) {
+                if (arrayData[itemIndex].name == "user_avatar") {
+                    if (arrayData[itemIndex].value) {
+                        let imagPath = "/static/images/avatars/" + arrayData[itemIndex].value;
+                        $("#reconfirm_"+arrayData[itemIndex].name).append("<img src='"+imagPath+"' />");
+                    }
+                } else if (arrayData[itemIndex].name == "user_sex") {
+                    let sexArray = {
+                        0: "",
+                        1: "Man",
+                        2: "Female"
+                    }
+                    $("#reconfirm_"+arrayData[itemIndex].name).text(sexArray[arrayData[itemIndex].value]);
+                } else if (arrayData[itemIndex].name == "user_profession") {
+                    let professionArray = {
+                       0: "", 
+                       1: "Student", 
+                       2: "office worker", 
+                       3: "Freelancer", 
+                       4: "Housewife", 
+                       5: "President", 
+                    }
+                    $("#reconfirm_"+arrayData[itemIndex].name).text(professionArray[arrayData[itemIndex].value]);
+                } else if (arrayData[itemIndex].name == "interest") {
+                    let interestArray = {
+                       1: "japanese", 
+                       2: "friends", 
+                       3: "liuxue", 
+                       4: "sports", 
+                       5: "foods", 
+                       6: "music", 
+                    }
+                    let selectedArray = arrayData[itemIndex].value.split(",");
+                    selectedString = ""
+                    for (selectedIdx in selectedArray) {
+                        let selectedId = selectedArray[selectedIdx];
+                        let interestSingle = interestArray[selectedId];
+                        if (selectedIdx != selectedArray.length-1) {
+                            selectedString += interestSingle + "; ";
+                        } else {
+                            selectedString += interestSingle;
+                        }
+                    }
+                    $("#reconfirm_"+arrayData[itemIndex].name).text(selectedString);
+                } else {
+                    $("#reconfirm_"+arrayData[itemIndex].name).text(arrayData[itemIndex].value);
+                }
+            }
+        })
+        $("button#re-turn-page1").click(function() {
+            $("div#page1").css("display", "");
+            $("div#page2").css("display", "none");
+            $("div#page3").css("display", "none");
+            $("div#recomfirm-div").css("display", "none")
+            $("div#settings-div").css("display", "")
+        })
+        $("button#cancel-regist").click(function(){
+            $(location).attr("href","/")
+        })
+        $("button#sub-cancel").click(function(){
+            $(location).attr("href","/")
         })
         $("div.interest-check input").click(function(){
             obj = document.getElementsByName("interests");
@@ -80,8 +177,18 @@
     });
 </script>
 <style>
+    .red {
+        color: red;
+        font-weight: 400;
+        font-size: 12px;
+    }
     img#img-avatar {
         width: 35%;
+        border-radius: 12px;
+    }
+    span#reconfirm_user_avatar img {
+        width: 15%;
+        border-radius: 12px;
     }
     div.modal.fade div.row div {
         margin-top: 0.5rem;
@@ -122,6 +229,12 @@
     .mt-0 .list-group-item-primary {
         background-color: #3498db;
     }
+    div.recap {
+        width: 100%;
+    }
+    div.g-recaptcha div {
+        margin:0 auto;
+    }
 </style>
 {% end %}
 {% block typebody %}
@@ -154,13 +267,14 @@
                     submit
                 </button>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
+        </div>
+    </div>
 </div>
 
 <div class="row regist">
     <div class="panel panel-black">
-    <div class="panel-heading"><b>{{ _('User Identity Setting') }} </b></div>
+    <div class="panel-heading" id="settings-div"><b>{{ _('User Identity Setting') }} </b></div>
+    <div class="panel-heading" id="recomfirm-div" style="display: none;"><b>{{ _('User Setting Recomfirm') }} </b></div>
     <div class="panel-body">
         <form id="form_regist" action="/user/regist" method="post" class="form-horizontal" role="form">
             <fieldset>
@@ -319,6 +433,10 @@
                               <label class="form-check-label" for="foods">
                                 美食
                               </label>
+                              <input class="form-check-input" name="interests" type="checkbox" value="6" id="music">
+                              <label class="form-check-label" for="music">
+                                音楽
+                              </label>
                             </div>
                             <input style="display: none;" class="form-control" id="interest" type="text" name="interest">
                         </div>
@@ -360,8 +478,98 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="submit-div">
-                                    <button id="sub1" type="submit" class="btn btn-primary">{{ _('Submit') }}</button>
+                                    <button id="reconfirmation" type="button" class="btn btn-primary">{{ _('Reconfirm') }}</button>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="page3" style="display: none;">
+                    <div class="row">
+                        將使用以下的資訊進行用戶創建，請在確認無誤後點下"登錄"或點下"返回"進行修正。
+                    </div>
+                    <div class="row">
+                        選擇頭像
+                    </div>
+                    <div class="row">
+                        <span id="reconfirm_user_avatar"></span>
+                    </div>
+                    <div class="row">
+                        登入帳號: <span id="reconfirm_user_name"></span>
+                    </div>
+                    <div class="row">
+                        登入密碼: <span id="reconfirm_user_pass"></span>
+                    </div>
+                    <div class="row">
+                        暱稱: <span id="reconfirm_nick_name"></span>
+                    </div>
+                    <div class="row">
+                        對自己的描述: <span id="reconfirm_introduction"></span>
+                    </div>
+                    <div class="row">
+                        聯絡信箱: <span id="reconfirm_user_email"></span>
+                    </div>
+                    <div class="row">
+                        性別: <span id="reconfirm_user_sex"></span>
+                    </div>
+                    <div class="row">
+                        年齡: <span id="reconfirm_user_age"></span>
+                    </div>
+                    <div class="row">
+                        身分: <span id="reconfirm_user_profession"></span>
+                    </div>
+                    <div class="row">
+                        有興趣或愛好的相關話題
+                        <span id="reconfirm_interest"></span>
+                    </div>
+                    <div class="row">
+                        出身地
+                        <span id="reconfirm_birth_place"></span>
+                    </div>
+                    <div class="row">
+                        所在地
+                        <span id="reconfirm_location"></span>
+                    </div>
+                    <div class="row">
+                        個人簡介・雜談
+                        <span id="reconfirm_profile_text"></span>
+                    </div>
+                    <div class="row">
+                        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                        <script type="text/javascript">
+                            function verify( token ){
+                                var jqxhr = $.post("/user/before_regist", { token: token }, function( data ) {
+                                    $("input#rechapcha").val(token)
+                                })
+                            }
+                        </script>
+                        <div class="recap">
+                            <form action="?" method="POST">
+                                <div 
+                                class="g-recaptcha" 
+                                data-sitekey="6LdqDJEhAAAAAJmC1njGmzwShiEoZZBsMONrHhgR"
+                                data-callback="verify"
+                                data-expired-callback="expired"
+                                data-error-callback="error"
+                                >
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="submit-div">
+                                <button id="re-turn-page1" type="button" class="btn btn-warning">{{ _('返回') }}</button>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="submit-div">
+                                <button id="cancel-regist" type="button" class="btn btn-warning">{{ _('取消') }}</button>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="submit-div">
+                                <button id="sub1" type="submit" class="btn btn-primary">{{ _('登錄') }}</button>
                             </div>
                         </div>
                     </div>
@@ -371,7 +579,5 @@
     </div>
 </div>
 </div>
-<!-- <script type="text/javascript" src="/static/js/app.js"></script> -->
-
 {% end %}
 

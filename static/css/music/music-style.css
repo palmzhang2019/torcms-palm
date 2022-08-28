@@ -203,9 +203,9 @@ select {
 */
 
 .music button,
-.music [type='button'],
-[type='reset'],
-[type='submit'] {
+.music[type='button'],
+.music[type='reset'],
+.music[type='submit'] {
   -webkit-appearance: button;
   /* 1 */
   background-color: transparent;
